@@ -169,3 +169,10 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 350px) {
+  .hero-top-left__prices{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
