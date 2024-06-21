@@ -18,7 +18,7 @@ const Header = () => {
   const { data } = useGetAllProductsQuery(searchValue);
   let handleCloser = () => {
     setSearchValue("");
-    setShowList(false)
+    setShowList(false);
   };
 
   return (
@@ -36,11 +36,6 @@ const Header = () => {
             <NavLink to={"/all-products"}>ALL PRODUCTS</NavLink>
             <NavLink to={"/about"}>ABOUT SEEDRA</NavLink>
             <NavLink to={"/blog"}>OUR BLOG</NavLink>
-            <NavLink to={"/admin"}>ADMIN</NavLink>
-            <NavLink to={"/cart"}>CART</NavLink>
-            <NavLink to={"/login"}>LOGIN</NavLink>
-            <NavLink to={"/payment"}>PAYMENT</NavLink>
-            <NavLink to={"/checkout"}>CHECKOUT</NavLink>
 
             <NavLink className="header__nav__list-contact" to={"/contact"}>
               CONTACTS
