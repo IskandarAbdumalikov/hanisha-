@@ -16,7 +16,7 @@ const Header = () => {
   const { pathname } = useLocation();
   const [searchValue, setSearchValue] = useState("");
   const [showList, setShowList] = useState(false);
-  const { data } = useGetAllProductsQuery(searchValue);
+  const { data } = useGetAllProductsQuery({ search: searchValue });
   const isLogin = localStorage.getItem("x-auth-token");
 
   let handleCloser = () => {

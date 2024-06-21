@@ -3,21 +3,24 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://ecommerceapi.firdavsdev.uz/products/search",
+    baseUrl: "https://market.ilyosbekdev.uz/",
   }),
   tagTypes: ["Product"],
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: (search) => `${search ? `?search=${search}` : ""}`,
+      query: (params) => ({
+        url: "products/search",
+        params,
+      }),
       providesTags: ["Product"],
     }),
     getSingleProduct: builder.query({
       query: (productId) => ({
-        url:`/${productId}`
+        url: `products/${productId}`,
       }),
       providesTags: ["Product"],
     }),
   }),
 });
 
-export const { useGetAllProductsQuery } = productsApi;
+export const { useGetAllProductsQuery, useGetSingleProductQuery } = productsApi;
