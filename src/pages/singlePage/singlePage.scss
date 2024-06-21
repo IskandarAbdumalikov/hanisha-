@@ -7,14 +7,18 @@
   gap: 50px;
   max-height: 800px;
   justify-content: space-between;
+  margin-top: 80px;
+
   &__left {
     width: 50%;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    max-width: 50%;
     &__main-img {
       border-radius: 20px;
       overflow: hidden;
+      min-height: 80%;
       img {
         width: 100%;
         height: 100%;
@@ -42,6 +46,7 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
+    min-width: 45%;
     &__info {
       display: flex;
       flex-direction: column;

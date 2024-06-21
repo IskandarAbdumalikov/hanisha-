@@ -38,7 +38,14 @@ const SinglePage = () => {
       <div className="single__card">
         <div className="single__card__left">
           <div className="single__card__left__main-img">
-            <img src={singleProduct?.urls[imageOrder]} alt="" />
+            <img
+              src={
+                singleProduct?.urls.length > 0
+                  ? singleProduct.urls[imageOrder]
+                  : "https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg"
+              }
+              alt={singleProduct?.title}
+            />
           </div>
           <div className="single__card__left__mini-images">{singleImages}</div>
         </div>
