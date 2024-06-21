@@ -12,7 +12,10 @@ import Contact from "./pages/contact/Contact";
 import Checkout from "./pages/checkout/Checkout";
 import Payment from "./pages/payment/Payment";
 import Auth from "./pages/auth/Auth";
+import NotFound from "./pages/notFound/NotFound";
 import SinglePage from "./pages/singlePage/SinglePage";
+import CreateProduct from "./pages/admin/create-product/CreateProduct";
+import ManageProduct from "./pages/admin/manage-product/ManageProduct";
 
 const App = () => {
   return (
@@ -21,9 +24,6 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
-          <Route path="/" element={<Auth />}>
-            <Route path="admin" element={<Admin />} />
-          </Route>
           <Route path="about" element={<About />} />
           <Route path="all-products" element={<AllProducts />} />
           <Route path="blog" element={<Blog />} />
@@ -31,7 +31,14 @@ const App = () => {
           <Route path="checkout" element={<Checkout />} />
           <Route path="contact" element={<Contact />} />
           <Route path="payment" element={<Payment />} />
-          <Route path="/:productId" element={<SinglePage />} />
+          <Route path="products/:productId" element={<SinglePage />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+        <Route path="/" element={<Auth />}>
+          <Route path="admin" element={<Admin />}>
+            <Route path="create-product" element={<CreateProduct />} />
+            <Route path="manage-product" element={<ManageProduct />} />
+          </Route>
         </Route>
       </Routes>
     </Fragment>

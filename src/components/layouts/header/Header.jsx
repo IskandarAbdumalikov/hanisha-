@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./header.scss";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../../assets/icons/logoIskandar.svg";
 import cart from "../../../assets/icons/cart.svg";
 import bar from "../../../assets/icons/bar.svg";
@@ -13,14 +13,20 @@ import { useGetAllProductsQuery } from "../../../context/productsSlice";
 import SearchModule from "./searchModule/SearchModule";
 
 const Header = () => {
+  const { pathname } = useLocation();
   const [searchValue, setSearchValue] = useState("");
   const [showList, setShowList] = useState(false);
-  const { data } = useGetAllProductsQuery(searchValue);
+  const { data } = useGetAllProductsQuery({ search: searchValue });
+  const isLogin = localStorage.getItem("x-auth-token");
+
   let handleCloser = () => {
     setSearchValue("");
     setShowList(false);
   };
 
+  if (pathname.includes("admin")) {
+    return <></>;
+  }
   return (
     <header className="header">
       <nav className="container header__nav">
@@ -56,13 +62,24 @@ const Header = () => {
               type="text"
             />
           </div>
-          <div onClick={handleCloser} className="show__list__closer">
+          {/* <div onClick={handleCloser} className="show__list__closer">
             <img width={25} src={x} alt="" />
-          </div>
+          </div> */}
         </div>
         <div className="header__nav__btns">
-          <img src={like} alt="" />
-          <img src={cart} alt="" />
+          {/* <img src={like} alt="" /> */}
+          {isLogin ? (
+            <Link className="header__login__link" to={"/admin/manage-product"}>
+              Admin
+            </Link>
+          ) : (
+            <Link className="header__login__link" to={"/login"}>
+              Login
+            </Link>
+          )}
+          <NavLink className="header__login__link" to={"/cart"}>
+            <img src={cart} alt="" />
+          </NavLink>
           <div
             onClick={() => setShowList((p) => !p)}
             className="header__nav__bar"

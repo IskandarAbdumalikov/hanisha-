@@ -3,21 +3,44 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://ecommerceapi.firdavsdev.uz/products/search",
+    baseUrl: "https://market.ilyosbekdev.uz/",
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("x-auth-token");
+      if (token) {
+        // Har so'rovda mana shu token headersda qo'shib jo'natiladi
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   tagTypes: ["Product"],
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: (search) => `${search ? `?search=${search}` : ""}`,
+      query: (params) => ({
+        url: "products/search",
+        params,
+      }),
       providesTags: ["Product"],
     }),
     getSingleProduct: builder.query({
       query: (productId) => ({
-        url:`/${productId}`
+        url: `products/${productId}`,
+      }),
+      providesTags: ["Product"],
+    }),
+    createProduct: builder.mutation({
+      query: (body) => ({
+        url: "products",
+        method: "POST",
+        body,
       }),
       providesTags: ["Product"],
     }),
   }),
 });
 
-export const { useGetAllProductsQuery } = productsApi;
+export const {
+  useGetAllProductsQuery,
+  useGetSingleProductQuery,
+  useCreateProductMutation,
+} = productsApi;

@@ -1,11 +1,17 @@
 import React from "react";
 import "./footer.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../../assets/icons/logoIskandar.svg";
 import instagram from "../../../assets/images/instagramFooter.svg";
 import facebook from "../../../assets/images/facebookFooter.svg";
 
 const Footer = () => {
+  const { pathname } = useLocation();
+
+  if (pathname.includes("admin")) {
+    return <></>;
+  }
+
   return (
     <footer className="">
       <div className="footer__top container">
