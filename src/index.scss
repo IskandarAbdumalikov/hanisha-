@@ -1,9 +1,12 @@
-*{
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+  font-family: "Lexend", sans-serif;
 }
 
 .container {
@@ -13,10 +16,10 @@
   margin: 0 auto;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-body{
-  background: #FCFCFC;
+body {
+  background: #fcfcfc;
 }

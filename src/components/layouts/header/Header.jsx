@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./header.scss";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../../assets/icons/logoIskandar.svg";
 import cart from "../../../assets/icons/cart.svg";
 import bar from "../../../assets/icons/bar.svg";
@@ -13,14 +13,19 @@ import { useGetAllProductsQuery } from "../../../context/productsSlice";
 import SearchModule from "./searchModule/SearchModule";
 
 const Header = () => {
+  const { pathname } = useLocation();
   const [searchValue, setSearchValue] = useState("");
   const [showList, setShowList] = useState(false);
   const { data } = useGetAllProductsQuery(searchValue);
+
   let handleCloser = () => {
     setSearchValue("");
     setShowList(false);
   };
 
+  if (pathname.includes("admin")) {
+    return <></>;
+  }
   return (
     <header className="header">
       <nav className="container header__nav">
