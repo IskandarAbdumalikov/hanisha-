@@ -3,7 +3,7 @@ import "./create-product.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LocalImages from "./LocalImages";
-import { useCreateProductMutation } from "../../../context/productApi";
+import { useCreateProductMutation } from "../../../context/productsSlice";
 
 const initialState = {
   title: "",
@@ -116,10 +116,10 @@ const CreateProduct = () => {
             name="info"
             type="text"
           />
-          <label htmlFor="create-product__file">
+          <label htmlFor="create-product__file" className="create__image">
             <input
               id="create-product__file"
-              className="create-product__input create-product__file"
+              className="create-product__input "
               required
               onChange={(e) => setFiles(e.target.files)}
               multiple={true}
