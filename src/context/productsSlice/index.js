@@ -13,11 +13,11 @@ export const productsApi = createApi({
     }),
     getSingleProduct: builder.query({
       query: (productId) => ({
-        url:`/${productId}`
+        url: `/${productId}`,
       }),
       providesTags: ["Product"],
     }),
   }),
 });
 
-export const { useGetAllProductsQuery } = productsApi;
+export const { useGetAllProductsQuery, useCreateProductMutation } = productsApi;
