@@ -4,7 +4,7 @@ import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const ContactSection = () => {
   return (
-    <div className="contact-section">
+    <div style={{marginTop:"80px",padding:"50px"}} className="contact-section container">
       <div className="contact-info">
         <h2 className="contact-info__title">Contact us</h2>
         <p className="contact-info__description">
