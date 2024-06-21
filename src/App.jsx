@@ -12,6 +12,7 @@ import Contact from "./pages/contact/Contact";
 import Checkout from "./pages/checkout/Checkout";
 import Payment from "./pages/payment/Payment";
 import Auth from "./pages/auth/Auth";
+import NotFound from "./pages/notFound/NotFound";
 import SinglePage from "./pages/singlePage/SinglePage";
 
 const App = () => {
@@ -21,9 +22,6 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
-          <Route element={<Auth />}>
-            <Route path="admin" element={<Admin />} />
-          </Route>
           <Route path="about" element={<About />} />
           <Route path="all-products" element={<AllProducts />} />
           <Route path="blog" element={<Blog />} />
@@ -33,6 +31,10 @@ const App = () => {
           <Route path="payment" element={<Payment />} />
           <Route path="/:productId" element={<SinglePage />} />
         </Route>
+        <Route path="/" element={<Auth />}>
+          <Route path="admin" element={<Admin />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Fragment>
   );
