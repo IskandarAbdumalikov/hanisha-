@@ -11,6 +11,12 @@ export const productsApi = createApi({
       query: (search) => `${search ? `?search=${search}` : ""}`,
       providesTags: ["Product"],
     }),
+    getSingleProduct: builder.query({
+      query: (productId) => ({
+        url:`/${productId}`
+      }),
+      providesTags: ["Product"],
+    }),
   }),
 });
 

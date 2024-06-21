@@ -33,10 +33,18 @@ const Header = () => {
           }
         >
           <ul className="header__nav__middle__list">
-            <NavLink>ALL PRODUCTS</NavLink>
-            <NavLink>ABOUT SEEDRA</NavLink>
-            <NavLink>OUR BLOG</NavLink>
-            <NavLink className="header__nav__list-contact">CONTACTS</NavLink>
+            <NavLink to={"/all-products"}>ALL PRODUCTS</NavLink>
+            <NavLink to={"/about"}>ABOUT SEEDRA</NavLink>
+            <NavLink to={"/blog"}>OUR BLOG</NavLink>
+            <NavLink to={"/admin"}>ADMIN</NavLink>
+            <NavLink to={"/cart"}>CART</NavLink>
+            <NavLink to={"/login"}>LOGIN</NavLink>
+            <NavLink to={"/payment"}>PAYMENT</NavLink>
+            <NavLink to={"/checkout"}>CHECKOUT</NavLink>
+
+            <NavLink className="header__nav__list-contact" to={"/contact"}>
+              CONTACTS
+            </NavLink>
             <li>
               <img src={instagram} alt="" />
               <img src={facebook} alt="" />
@@ -53,10 +61,7 @@ const Header = () => {
               type="text"
             />
           </div>
-          <div
-            onClick={handleCloser}
-            className="show__list__closer"
-          >
+          <div onClick={handleCloser} className="show__list__closer">
             <img width={25} src={x} alt="" />
           </div>
         </div>
@@ -76,7 +81,7 @@ const Header = () => {
       ) : (
         <></>
       )}
-      {searchValue ? <SearchModule data={data} showList={showList}/> : <></>}
+      {searchValue ? <SearchModule data={data} showList={showList} /> : <></>}
     </header>
   );
 };
