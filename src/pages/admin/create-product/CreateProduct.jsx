@@ -42,7 +42,7 @@ const CreateProduct = () => {
       form.append("files", img, img.name);
     });
     createProduct(form);
-    navigate("/admin/manage-products");
+    navigate("/admin/manage-product");
   };
 
   return (

@@ -62,14 +62,14 @@ const Header = () => {
               type="text"
             />
           </div>
-          <div onClick={handleCloser} className="show__list__closer">
+          {/* <div onClick={handleCloser} className="show__list__closer">
             <img width={25} src={x} alt="" />
-          </div>
+          </div> */}
         </div>
         <div className="header__nav__btns">
           {/* <img src={like} alt="" /> */}
           {isLogin ? (
-            <Link className="header__login__link" to={"/admin"}>
+            <Link className="header__login__link" to={"/admin/manage-product"}>
               Admin
             </Link>
           ) : (

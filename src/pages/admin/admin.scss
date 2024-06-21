@@ -68,3 +68,14 @@
     gap: 24px;
   }
 }
+
+@media (max-width: 575px) {
+  .admin {
+    grid-template-columns: 74px 1fr;
+    .sidebar__logo,
+    .sidebar__link {
+      padding: 10px;
+      gap: 24px;
+    }
+  }
+}
