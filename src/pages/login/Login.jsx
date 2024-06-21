@@ -11,7 +11,8 @@ const initialState = {
 
 const Login = () => {
   const [formData, setFormData] = useState(initialState);
-  const [signIn, { data, error, isLoading, isSuccess }] = useSignInMutation();
+  const [signIn, { data, isError, isLoading, isSuccess, error }] =
+    useSignInMutation();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -22,15 +23,12 @@ const Login = () => {
   useEffect(() => {
     if (isSuccess) {
       localStorage.setItem("x-auth-token", data.data.token);
-      navigate(`/admin`);
+      navigate("/admin/create-product");
     }
-  }, [isSuccess]);
-
-  useEffect(() => {
-    if (error) {
+    if (isError) {
       alert(error.data.message);
     }
-  });
+  }, [isSuccess, isError]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -63,7 +61,7 @@ const Login = () => {
             />
           </label>
           <button disabled={isLoading} className="login__btn">
-            Submit
+            {isLoading ? "Loading..." : "Submit"}
           </button>
         </form>
       </div>

@@ -4,6 +4,14 @@ export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://market.ilyosbekdev.uz/",
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("x-auth-token");
+      if (token) {
+        // Har so'rovda mana shu token headersda qo'shib jo'natiladi
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   tagTypes: ["Product"],
   endpoints: (builder) => ({
@@ -20,7 +28,19 @@ export const productsApi = createApi({
       }),
       providesTags: ["Product"],
     }),
+    createProduct: builder.mutation({
+      query: (body) => ({
+        url: "products",
+        method: "POST",
+        body,
+      }),
+      providesTags: ["Product"],
+    }),
   }),
 });
 
-export const { useGetAllProductsQuery, useGetSingleProductQuery } = productsApi;
+export const {
+  useGetAllProductsQuery,
+  useGetSingleProductQuery,
+  useCreateProductMutation,
+} = productsApi;

@@ -14,6 +14,8 @@ import Payment from "./pages/payment/Payment";
 import Auth from "./pages/auth/Auth";
 import NotFound from "./pages/notFound/NotFound";
 import SinglePage from "./pages/singlePage/SinglePage";
+import CreateProduct from "./pages/admin/create-product/CreateProduct";
+import ManageProduct from "./pages/admin/manage-product/ManageProduct";
 
 const App = () => {
   return (
@@ -33,7 +35,10 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/" element={<Auth />}>
-          <Route path="admin" element={<Admin />} />
+          <Route path="admin" element={<Admin />}>
+            <Route path="create-product" element={<CreateProduct />} />
+            <Route path="manage-product" element={<ManageProduct />} />
+          </Route>
         </Route>
       </Routes>
     </Fragment>
