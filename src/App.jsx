@@ -29,12 +29,12 @@ const App = () => {
           <Route path="checkout" element={<Checkout />} />
           <Route path="contact" element={<Contact />} />
           <Route path="payment" element={<Payment />} />
-          <Route path="/:productId" element={<SinglePage />} />
+          <Route path="products/:productId" element={<SinglePage />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/" element={<Auth />}>
           <Route path="admin" element={<Admin />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </Fragment>
   );
