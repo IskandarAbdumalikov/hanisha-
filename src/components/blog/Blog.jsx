@@ -2,6 +2,7 @@ import React from "react";
 import { IoTime } from "react-icons/io5";
 
 import "./homeBlog.scss";
+import { Link } from "react-router-dom";
 
 const HomeBlog = () => {
   // BLOG DATA MAP

@@ -52,11 +52,27 @@
 .blog__cards__right__bottom {
   background: url(../../assets/images/howToGirl.svg) no-repeat bottom right;
   background-color: #eff7f0;
-  border-radius: 10px;
+  border-radius: 12px;
   min-height: 600px;
 }
 
 .how__to__footer {
   background: #359740;
   min-height: 110px;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__left{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+  }
+  &__right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }

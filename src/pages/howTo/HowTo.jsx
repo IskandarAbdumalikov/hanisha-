@@ -4,10 +4,9 @@ import capusta from "../../assets/images/blog-top.png";
 import howTo from "../../assets/images/howTo.svg";
 import { Link } from "react-router-dom";
 import { IoTime } from "react-icons/io5";
-import facebook from '../../assets/icons/facebook.svg'
+import facebook from "../../assets/icons/facebook.svg";
 import twitter from "../../assets/icons/twitter.svg";
 import pinterest from "../../assets/icons/pinterest.svg";
-
 
 const HowTo = () => {
   return (
@@ -122,9 +121,15 @@ const HowTo = () => {
           <h2>Share with friends</h2>
         </div>
         <div className="how__to__footer__right">
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
+          <a href="https://www.facebook.com/">
+            <img src={facebook} alt="" />
+          </a>
+          <a href="https://x.com/?lang=en">
+            <img src={twitter} alt="" />
+          </a>
+          <a href="https://www.pinterest.com/">
+            <img src={pinterest} alt="" />
+          </a>
         </div>
       </div>
     </div>
