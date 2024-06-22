@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { Fragment, memo } from 'react'
 // images
 import heroTopImage from './hero-top-image.png'
 import bgHeroImg1 from './mini-hero-right.svg'
@@ -9,7 +9,7 @@ import './hero.scss'
 
 const Hero = () => {
   return (
-    <div className='hero container'>
+    <Fragment className='hero container'>
       <div className="hero-top">
         <div className="hero-top-left">
           <h1 className='hero-top-left__title'>SEEDRA Basil Seeds for Indoor and Outdoor Planting</h1>
@@ -38,7 +38,7 @@ const Hero = () => {
         </ul>
         <img src={bgHeroImg1} className="bg-img1" />
       </div>
-    </div>
+    </Fragment>
   )
 }
 
