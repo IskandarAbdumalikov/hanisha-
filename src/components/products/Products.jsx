@@ -10,9 +10,11 @@ import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Products = () => {
-  const { data } = useGetAllProductsQuery();
-  const { data: categoriesData } = useGetCategoriesQuery({limit: 8});
+  const { data } = useGetAllProductsQuery({limit: 8});
+  const { data: categoriesData } = useGetCategoriesQuery();
   // console.log(categoriesData.data);
+
+  console.log(data );
 
   let categories = categoriesData?.data.map((el) => (
     <li key={el.id}>
@@ -58,7 +60,9 @@ const Products = () => {
           {categories}
         </ul>
       </div>
-      <div className="products__cards">{card}</div>
+      <div className="products__cards">
+        {card}
+      </div>
     </div>
   );
 };
