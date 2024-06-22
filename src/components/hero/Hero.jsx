@@ -6,8 +6,11 @@ import bgHeroImg2 from '../../assets/images/mini-hero-left.svg'
 import olov from '../../assets/images/olov.png'
 // style
 import './hero.scss'
+import { useNavigate } from 'react-router'
 
 const Hero = () => {
+  const navigate = useNavigate()
+
   return (
     <Fragment className='hero container'>
       <div className="hero-top">
@@ -22,7 +25,7 @@ const Hero = () => {
             <p className='hero-top-left__prices-old'>$15.56</p>
           </div>
           <div className='hero-top-left__btns'>
-            <button className='hero-top-left__btns-add'>Add to cart</button>
+            <button onClick={() => navigate('/cart')} className='hero-top-left__btns-add'>Add to cart</button>
             <button className='hero-top-left__btns-discover'>Discover</button>
           </div>
         </div>

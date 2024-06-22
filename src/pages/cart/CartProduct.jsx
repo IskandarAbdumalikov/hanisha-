@@ -37,7 +37,7 @@ const CartProduct = () => {
             </div>
             <div className="cart-product-div4">
                 <p className='div-p'>TOTAL</p>
-                <h5>${(12.56) * count}</h5>
+                <h5>${((12.56) * count).brm()}</h5>
             </div>
         </div>
     )
