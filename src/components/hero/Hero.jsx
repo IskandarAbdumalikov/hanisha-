@@ -9,7 +9,7 @@ import './hero.scss'
 
 const Hero = () => {
   return (
-    <Fragment className='hero container'>
+    <section className='hero container'>
       <div className="hero-top">
         <div className="hero-top-left">
           <h1 className='hero-top-left__title'>SEEDRA Basil Seeds for Indoor and Outdoor Planting</h1>
@@ -38,7 +38,7 @@ const Hero = () => {
         </ul>
         <img src={bgHeroImg1} className="bg-img1" />
       </div>
-    </Fragment>
+    </section>
   )
 }
 
