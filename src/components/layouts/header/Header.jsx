@@ -62,7 +62,7 @@ const Header = () => {
         </div>
         <div className="header__nav__btns">
           <img src={like} alt="" />
-          <img src={cart} alt="" />
+          <Link to={'/cart'}> <img src={cart} alt="" /> </Link>
           <div
             onClick={() => setShowList((p) => !p)}
             className="header__nav__bar"
