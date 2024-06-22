@@ -1,9 +1,11 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { TiDelete } from "react-icons/ti";
 import cartImage from '../../assets/images/cart-imagee.svg'
 import './cart-product.scss'
 
 const CartProduct = () => {
+    const [count, setCount] = useState(2)
+
     return (
         <div className='cart-product'>
             <button className='cart-product-x'>
@@ -22,9 +24,9 @@ const CartProduct = () => {
             <div className="cart-product-div2">
                 <p className='div-p'>AMOUNT</p>
                 <ul className='cart-product-div2-crud'>
-                    <li>-</li>
-                    <li className='cart-product-div2-crud-count'>2</li>
-                    <li>+</li>
+                    <li disabled={count <= 0} onClick={() => setCount(p => p - 1)}>-</li>
+                    <li className='cart-product-div2-crud-count'>{count}</li>
+                    <li onClick={() => setCount(p => p + 1)}>+</li>
                 </ul>
             </div>
             <div className="cart-product-div3">
@@ -33,7 +35,7 @@ const CartProduct = () => {
             </div>
             <div className="cart-product-div4">
                 <p className='div-p'>TOTAL</p>
-                <h5>$12.56</h5>
+                <h5>${(12.56) * count}</h5>
             </div>
         </div>
     )

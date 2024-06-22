@@ -1,7 +1,7 @@
 import React from 'react'
 import CartProduct from './CartProduct'
-import './cart.scss'
 import TotalAmount from '../../components/total-amount'
+import './cart.scss'
 
 const Cart = () => {
   return (
@@ -14,6 +14,10 @@ const Cart = () => {
         <hr />
         <CartProduct />
         <CartProduct />
+        <CartProduct />
+        <CartProduct />
+        <CartProduct />
+        <button className='cart-left-btn'>Continue shopping</button>
       </div>
       <div className="cart-right">
         <h4 className='cart-right-h4'>Order summary</h4>

@@ -17,6 +17,17 @@
   width: 100%;
   margin: 0 auto;
 }
+.cart-left-btn {
+  display: none;
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid gray;
+  margin: 20px 0;
+  font-size: 16px;
+  color: rgb(108, 106, 106);
+  background-color: white;
+}
 .cart-title {
   max-width: 700px;
   width: 100%;
@@ -99,11 +110,16 @@
 // cart right style end
 
 // style media
-@media (min-width: 1134px) {
+@media (min-width: 990px) {
   .cart-right {
     margin-top: 0;
   }
   .cart-product-right-label {
     display: flex;
+  }
+}
+@media (min-width: 700px) {
+  .cart-left-btn{
+    display: block;
   }
 }

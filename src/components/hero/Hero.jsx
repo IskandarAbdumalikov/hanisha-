@@ -1,9 +1,9 @@
 import React, { Fragment, memo } from 'react'
 // images
-import heroTopImage from './hero-top-image.png'
-import bgHeroImg1 from './mini-hero-right.svg'
-import bgHeroImg2 from './mini-hero-left.svg'
-import olov from './olov.png'
+import heroTopImage from '../../assets/images/hero-top-image.png'
+import bgHeroImg1 from '../../assets/images/mini-hero-right.svg'
+import bgHeroImg2 from '../../assets/images/mini-hero-left.svg'
+import olov from '../../assets/images/olov.png'
 // style
 import './hero.scss'
 
