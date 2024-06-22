@@ -10,7 +10,7 @@ import { FaStar } from "react-icons/fa";
 
 const Products = () => {
   const { data } = useGetAllProductsQuery();
-  const { data: categoriesData } = useGetCategoriesQuery();
+  const { data: categoriesData } = useGetCategoriesQuery({limit: 8});
   // console.log(categoriesData.data);
 
   let categories = categoriesData?.data.map((el) => (
