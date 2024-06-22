@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const Products = () => {
   const { data } = useGetAllProductsQuery();
-  const { data: categoriesData } = useGetCategoriesQuery();
+  const { data: categoriesData } = useGetCategoriesQuery({limit: 8});
   // console.log(categoriesData.data);
 
   let categories = categoriesData?.data.map((el) => (
