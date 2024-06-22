@@ -2,10 +2,16 @@ import React from "react";
 import "./howTo.scss";
 import capusta from "../../assets/images/blog-top.png";
 import howTo from "../../assets/images/howTo.svg";
+import { Link } from "react-router-dom";
+import { IoTime } from "react-icons/io5";
+import facebook from '../../assets/icons/facebook.svg'
+import twitter from "../../assets/icons/twitter.svg";
+import pinterest from "../../assets/icons/pinterest.svg";
+
 
 const HowTo = () => {
   return (
-    <div className="container">
+    <div className="container how__to">
       <div className="how__to__header">
         <h1>How to plant spinach correctly in winter</h1>
         <img src={capusta} alt="" />
@@ -26,7 +32,7 @@ const HowTo = () => {
             You can also download my How Do I Grow Spinach? one-sheet and keep
             the free resource handy for your reference
           </h3>
-          <img src={howTo} alt="" />
+          <img className="how__to__body__left__img" src={howTo} alt="" />
           <h2>When, Where and How to Plant Spinach</h2>
           <h3>
             Spinach can be either sown directly into the garden or started from
@@ -70,10 +76,57 @@ const HowTo = () => {
         </div>
         <div className="how__to__body__right">
           <h2>Related titles</h2>
-          
+          <div className="blog__cards__right">
+            <div className="blog__card">
+              <span className="blog__card__time">
+                <IoTime className="blog__card__time-icon" />
+                12.09.2021
+              </span>
+
+              <h3 className="blog__card__title">
+                How to plant spinach correctly in winter
+              </h3>
+              <p className="blog__card__text">
+                In most areas, successive sowing can be done from early spring
+                until early winter, but more often during hotter months...
+              </p>
+              <Link to={"how-to"} className="blog__card__btn">
+                Read
+              </Link>
+            </div>
+          </div>
+          <div className="blog__cards__right__bottom">
+            <div className="blog__card">
+              <span className="blog__card__time">
+                <IoTime className="blog__card__time-icon" />
+                12.09.2021
+              </span>
+
+              <h3 className="blog__card__title">
+                How to plant spinach correctly in winter
+              </h3>
+              <p className="blog__card__text">
+                In most areas, successive sowing can be done from early spring
+                until early winter, but more often during hotter months...
+              </p>
+              <Link to={"how-to"} className="blog__card__btn">
+                Read
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="how__to__footer"></div>
+      <div className="how__to__footer">
+        <div className="how__to__footer__left">
+          <h3>Title was helpful?</h3>
+          <h2>Share with friends</h2>
+        </div>
+        <div className="how__to__footer__right">
+          <img src="" alt="" />
+          <img src="" alt="" />
+          <img src="" alt="" />
+        </div>
+      </div>
     </div>
   );
 };
