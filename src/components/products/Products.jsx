@@ -1,20 +1,18 @@
 import React from "react";
-import { LuShoppingCart } from "react-icons/lu";
 
 import { useGetAllProductsQuery } from "../../context/productsSlice";
 import { useGetCategoriesQuery } from "../../context/categorySlice";
 
 import "./products.scss";
-import { CiHeart } from "react-icons/ci";
-import { FaStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { ProductItem } from './ProductItem'
+
 
 const Products = () => {
-  const { data } = useGetAllProductsQuery({limit: 8});
+  const { data } = useGetAllProductsQuery({ limit: 8 });
   const { data: categoriesData } = useGetCategoriesQuery();
   // console.log(categoriesData.data);
 
-  console.log(data );
+  // console.log(data );
 
   let categories = categoriesData?.data.map((el) => (
     <li key={el.id}>
@@ -23,30 +21,7 @@ const Products = () => {
   ));
 
   let card = data?.data.products.map((el) => (
-    <div key={el.id} className="products__cards__card">
-      <Link to={`products/${el.id}`} className="products__cards__card-img">
-        <img src={el.urls[0]} alt="images" />
-      </Link>
-      <div className="products__cards__card-rating">
-        <FaStar className="stars" />
-        <FaStar className="stars" />
-        <FaStar className="stars" />
-        <FaStar className="stars" />
-        <FaStar className="stars" />
-      </div>
-      <div className="products__cards__card-title">
-        <span>{el.title}</span>
-      </div>
-      <div className="products__cards__card-shop">
-        <p>${el.price}</p>
-        <button>
-          <LuShoppingCart className="icon" />
-        </button>
-        <button className="heart">
-          <CiHeart />
-        </button>
-      </div>
-    </div>
+    <ProductItem key={el.id} id={el.id} urls={el.urls[0]} title={el.title} price={el.price} />
   ));
 
   return (
