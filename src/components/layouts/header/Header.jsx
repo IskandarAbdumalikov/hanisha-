@@ -42,6 +42,11 @@ const Header = () => {
             <NavLink to={"/all-products"}>ALL PRODUCTS</NavLink>
             <NavLink to={"/about"}>ABOUT SEEDRA</NavLink>
             <NavLink to={"/blog"}>OUR BLOG</NavLink>
+            {isLogin ? (
+              <NavLink to={"/admin/manage-product"}>ADMIN</NavLink>
+            ) : (
+              <NavLink to={"/login"}>LOGIN</NavLink>
+            )}
 
             <NavLink className="header__nav__list-contact" to={"/contact"}>
               CONTACTS
@@ -68,7 +73,7 @@ const Header = () => {
         </div>
         <div className="header__nav__btns">
           <img src={like} alt="" />
-          <NavLink to={'/cart'}>
+          <NavLink to={"/cart"}>
             <img src={cart} alt="" />
           </NavLink>
           <div

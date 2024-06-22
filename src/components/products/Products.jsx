@@ -24,7 +24,7 @@ const Products = () => {
 
   let card = data?.data.products.map((el) => (
     <div key={el.id} className="products__cards__card">
-      <Link to={`products/${el.id}`} className="products__cards__card-img">
+      <Link to={`/products/${el.id}`} className="products__cards__card-img">
         <img src={el.urls[0]} alt="images" />
       </Link>
       <div className="products__cards__card-rating">
