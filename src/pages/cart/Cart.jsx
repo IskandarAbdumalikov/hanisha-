@@ -1,6 +1,5 @@
 import React from 'react'
 import CartProduct from './CartProduct'
-import cartImage from '../../assets/images/cart-imagee.svg'
 import './cart.scss'
 
 const Cart = () => {
