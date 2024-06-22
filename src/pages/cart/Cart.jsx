@@ -12,6 +12,14 @@ const Cart = () => {
           <p className='cart-title-p'>3 items</p>
         </div>
         <hr />
+        <div className='cart-name'>
+          <h3 className='cart-name-h3'>PRODUCT DETAILS</h3>
+          <div className="cart-name-list">
+            <p className='cart-title-p'>AMOUNT</p>
+            <p className='cart-title-p'>PRICE</p>
+            <p className='cart-title-p'>TOTAL</p>
+          </div>
+        </div>
         <CartProduct />
         <CartProduct />
         <CartProduct />
