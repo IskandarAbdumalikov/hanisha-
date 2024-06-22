@@ -1,4 +1,6 @@
 import React from 'react'
+import CartProduct from './CartProduct'
+import cartImage from '../../assets/images/cart-imagee.svg'
 import './cart.scss'
 
 const Cart = () => {
@@ -10,9 +12,10 @@ const Cart = () => {
           <p className='cart-title-p'>3 items</p>
         </div>
         <hr />
+        <CartProduct />
       </div>
       <div className="cart-right">
-        <h4>Order summary</h4>
+        <h4 className='cart-right'>Order summary</h4>
       </div>
     </div>
   )
