@@ -1,7 +1,12 @@
 import React from "react";
 import { IoTime } from "react-icons/io5";
 
+<<<<<<< HEAD
 import "./homeBlog.scss";
+=======
+import "./blog.scss";
+import { Link } from "react-router-dom";
+>>>>>>> db0c5f85437ecb1c6d05aeaa99501f3e7f4617c1
 
 const HomeBlog = () => {
   // BLOG DATA MAP
@@ -41,7 +46,13 @@ const HomeBlog = () => {
                   In most areas, successive sowing can be done from early spring
                   until early winter, but more often during hotter months...
                 </p>
+<<<<<<< HEAD
                 <button className="homeBlog__card__btn">Read</button>
+=======
+                <Link to={"how-to"} className="blog__card__btn">
+                  Read
+                </Link>
+>>>>>>> db0c5f85437ecb1c6d05aeaa99501f3e7f4617c1
               </div>
             </div>
             <div className="homeBlog__cards__bottom">
@@ -54,7 +65,13 @@ const HomeBlog = () => {
                 <h3 className="homeBlog__card__title">
                   How to plant spinach correctly in winter
                 </h3>
+<<<<<<< HEAD
                 <button className="homeBlog__card__btn">Read</button>
+=======
+                <Link to={"how-to"} className="blog__card__btn">
+                  Read
+                </Link>
+>>>>>>> db0c5f85437ecb1c6d05aeaa99501f3e7f4617c1
               </div>
               <div className="homeBlog__card homeBlog__cards-bottom">
                 <span className="homeBlog__card__time">
@@ -65,7 +82,13 @@ const HomeBlog = () => {
                 <h3 className="homeBlog__card__title">
                   How to plant spinach correctly in winter
                 </h3>
+<<<<<<< HEAD
                 <button className="homeBlog__card__btn">Read</button>
+=======
+                <Link to={"how-to"} className="blog__card__btn">
+                  Read
+                </Link>
+>>>>>>> db0c5f85437ecb1c6d05aeaa99501f3e7f4617c1
               </div>
             </div>
           </div>
@@ -83,7 +106,13 @@ const HomeBlog = () => {
                 In most areas, successive sowing can be done from early spring
                 until early winter, but more often during hotter months...
               </p>
+<<<<<<< HEAD
               <button className="homeBlog__card__btn">Read</button>
+=======
+              <Link to={"how-to"} className="blog__card__btn">
+                Read
+              </Link>
+>>>>>>> db0c5f85437ecb1c6d05aeaa99501f3e7f4617c1
             </div>
           </div>
         </div>

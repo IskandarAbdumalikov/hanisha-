@@ -16,6 +16,7 @@ import NotFound from "./pages/notFound/NotFound";
 import SinglePage from "./pages/singlePage/SinglePage";
 import CreateProduct from "./pages/admin/create-product/CreateProduct";
 import ManageProduct from "./pages/admin/manage-product/ManageProduct";
+import HowTo from "./pages/howTo/HowTo";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
+          <Route path="how-to" element={<HowTo/>}/>
           <Route path="about" element={<About />} />
           <Route path="all-products" element={<AllProducts />} />
           <Route path="blog" element={<Blog />} />

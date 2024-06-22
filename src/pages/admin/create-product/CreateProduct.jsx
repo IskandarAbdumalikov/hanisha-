@@ -42,6 +42,7 @@ const CreateProduct = () => {
       form.append("files", img, img.name);
     });
     createProduct(form);
+    console.log(formData);
     navigate("/admin/manage-product");
   };
 
