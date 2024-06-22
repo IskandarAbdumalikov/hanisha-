@@ -1,6 +1,6 @@
 import React from 'react'
 import CartProduct from './CartProduct'
-import cartImage from '../../assets/images/cart-imagee.svg'
+import TotalAmount from '../../components/total-amount'
 import './cart.scss'
 
 const Cart = () => {
@@ -13,9 +13,29 @@ const Cart = () => {
         </div>
         <hr />
         <CartProduct />
+        <CartProduct />
+        <CartProduct />
+        <CartProduct />
+        <CartProduct />
+        <button className='cart-left-btn'>Continue shopping</button>
       </div>
       <div className="cart-right">
-        <h4 className='cart-right'>Order summary</h4>
+        <h4 className='cart-right-h4'>Order summary</h4>
+        <div className='cart-right-items'>
+          <p className='cart-right-items-p'>3 ITEMS</p>
+          <h5 className='cart-right-items-h5'>$12.56</h5>
+        </div>
+        <select className='cart-right-select' name="" id="">
+          <option value="shopping"> Type of delievery Shipping</option>
+          <option value="shopping">shopping</option>
+          <option value="shopping">shopping</option>
+        </select>
+        <label htmlFor="promocode" className='cart-product-right-label'>
+          Promocode <input type="text" name="" id="promocode" placeholder='Promocode' />
+        </label>
+        <hr />
+        <TotalAmount key={'3'} name={'Total amount'} price={'$12.56'} />
+        <button className='cart-right-btn' type='button'>Checkout</button>
       </div>
     </div>
   )
