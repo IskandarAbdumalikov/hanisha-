@@ -16,16 +16,18 @@ const Footer = () => {
     <footer className="">
       <div className="footer__top container">
         <div className="footer__left__list">
-          <Link>ALL PRODUCTS</Link>
-          <Link>ABOUT SEEDRA</Link>
-          <Link className="no-border">OUR BLOG</Link>
+          <Link to={"/all-products"}>ALL PRODUCTS</Link>
+          <Link to={"/about"}>ABOUT SEEDRA</Link>
+          <Link to={"/blog"} className="no-border">
+            OUR BLOG
+          </Link>
         </div>
         <div className="footer__logo">
           <img src={logo} alt="" />
         </div>
         <div className="footer__right__list">
           <Link>Terms&Conditions</Link>
-          <Link className="no-border">Privacy Policy</Link>
+          <Link  className="no-border">Privacy Policy</Link>
         </div>
       </div>
       <div className="footer__bottom container">
