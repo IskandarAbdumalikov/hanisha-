@@ -67,19 +67,8 @@ const Header = () => {
           </div> */}
         </div>
         <div className="header__nav__btns">
-          {/* <img src={like} alt="" /> */}
-          {isLogin ? (
-            <Link className="header__login__link" to={"/admin/manage-product"}>
-              Admin
-            </Link>
-          ) : (
-            <Link className="header__login__link" to={"/login"}>
-              Login
-            </Link>
-          )}
-          <NavLink className="header__login__link" to={"/cart"}>
-            <img src={cart} alt="" />
-          </NavLink>
+          <img src={like} alt="" />
+          <img src={cart} alt="" />
           <div
             onClick={() => setShowList((p) => !p)}
             className="header__nav__bar"
