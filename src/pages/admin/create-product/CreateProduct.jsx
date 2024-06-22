@@ -37,7 +37,7 @@ const CreateProduct = () => {
     form.append("category", formData.category);
     form.append("units", formData.units);
     form.append("description", formData.description);
-    form.append("info", JSON.stringify([formData.info]));
+    form.append("info", JSON.stringify({}));
     Array.from(files).forEach((img) => {
       form.append("files", img, img.name);
     });

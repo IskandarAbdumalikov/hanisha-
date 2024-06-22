@@ -10,7 +10,7 @@ export const ProductItem = ({ id, urls, title, price }) => {
     console.log(urls);
     return (
         <div key={id} className="products__cards__card">
-            <Link to={`products/${id}`} >
+            <Link to={`/products/${id}`} >
                 <div className="products__cards__card-img">
                     <img src='https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone-11-Pro_Matte-Glass-Back_091019_big.jpg.large.jpg' alt="images" />
                 </div>

@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const SearchModule = ({ data, showList }) => {
+const SearchModule = ({ data, showList, handleCloser }) => {
   let product = data?.data?.products;
   return (
     <div
@@ -10,10 +11,15 @@ const SearchModule = ({ data, showList }) => {
     >
       {product.length ? (
         product?.map((el) => (
-          <div key={el.id} className="header__search-module__card">
+          <Link
+            onClick={handleCloser}
+            to={`/products/${el.id}`}
+            key={el.id}
+            className="header__search-module__card"
+          >
             <img src={el.urls[0]} alt="img" />
             <p>{el.title}</p>
-          </div>
+          </Link>
         ))
       ) : (
         <h2>Nothing Founded</h2>
