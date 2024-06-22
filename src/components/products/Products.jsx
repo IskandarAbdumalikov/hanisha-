@@ -7,11 +7,14 @@ import { useGetCategoriesQuery } from "../../context/categorySlice";
 import "./products.scss";
 import { CiHeart } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Products = () => {
-  const { data } = useGetAllProductsQuery();
-  const { data: categoriesData } = useGetCategoriesQuery({limit: 8});
+  const { data } = useGetAllProductsQuery({limit: 8});
+  const { data: categoriesData } = useGetCategoriesQuery();
   // console.log(categoriesData.data);
+
+  console.log(data );
 
   let categories = categoriesData?.data.map((el) => (
     <li key={el.id}>
@@ -21,9 +24,9 @@ const Products = () => {
 
   let card = data?.data.products.map((el) => (
     <div key={el.id} className="products__cards__card">
-      <div className="products__cards__card-img">
+      <Link to={`products/${el.id}`} className="products__cards__card-img">
         <img src={el.urls[0]} alt="images" />
-      </div>
+      </Link>
       <div className="products__cards__card-rating">
         <FaStar className="stars" />
         <FaStar className="stars" />
@@ -57,7 +60,9 @@ const Products = () => {
           {categories}
         </ul>
       </div>
-      <div className="products__cards">{card}</div>
+      <div className="products__cards">
+        {card}
+      </div>
     </div>
   );
 };
