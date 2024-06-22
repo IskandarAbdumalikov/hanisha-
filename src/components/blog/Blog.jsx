@@ -2,6 +2,7 @@ import React from "react";
 import { IoTime } from "react-icons/io5";
 
 import "./blog.scss";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   // BLOG DATA MAP
@@ -41,7 +42,9 @@ const Blog = () => {
                   In most areas, successive sowing can be done from early spring
                   until early winter, but more often during hotter months...
                 </p>
-                <button className="blog__card__btn">Read</button>
+                <Link to={"how-to"} className="blog__card__btn">
+                  Read
+                </Link>
               </div>
             </div>
             <div className="blog__cards__bottom">
@@ -54,7 +57,9 @@ const Blog = () => {
                 <h3 className="blog__card__title">
                   How to plant spinach correctly in winter
                 </h3>
-                <button className="blog__card__btn">Read</button>
+                <Link to={"how-to"} className="blog__card__btn">
+                  Read
+                </Link>
               </div>
               <div className="blog__card blog__cards-bottom">
                 <span className="blog__card__time">
@@ -65,7 +70,9 @@ const Blog = () => {
                 <h3 className="blog__card__title">
                   How to plant spinach correctly in winter
                 </h3>
-                <button className="blog__card__btn">Read</button>
+                <Link to={"how-to"} className="blog__card__btn">
+                  Read
+                </Link>
               </div>
             </div>
           </div>
@@ -83,7 +90,9 @@ const Blog = () => {
                 In most areas, successive sowing can be done from early spring
                 until early winter, but more often during hotter months...
               </p>
-              <button className="blog__card__btn">Read</button>
+              <Link to={"how-to"} className="blog__card__btn">
+                Read
+              </Link>
             </div>
           </div>
         </div>
