@@ -93,7 +93,15 @@ const Header = () => {
       ) : (
         <></>
       )}
-      {searchValue ? <SearchModule data={data} showList={showList} /> : <></>}
+      {searchValue ? (
+        <SearchModule
+          data={data}
+          handleCloser={handleCloser}
+          showList={showList}
+        />
+      ) : (
+        <></>
+      )}
     </header>
   );
 };
