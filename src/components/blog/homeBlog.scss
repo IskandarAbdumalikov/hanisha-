@@ -1,5 +1,6 @@
-.blog {
+.homeBlog {
   padding: 35px 0;
+
   &__top {
     display: flex;
     justify-content: space-between;
@@ -128,7 +129,7 @@
 }
 
 @media (max-width: 1130px) {
-  .blog {
+  .homeBlog {
     &__cards {
       flex-direction: column;
 
@@ -137,8 +138,7 @@
       }
 
       &__right {
-        background: url(../../assets/images/blog-right.png) no-repeat bottom
-          right;
+        background: url(../../assets/images/blog-right.png) no-repeat bottom right;
         background-size: contain;
         background-color: #eff2f8;
       }
@@ -147,7 +147,7 @@
 }
 
 @media (max-width: 730px) {
-  .blog {
+  .homeBlog {
     &__title {
       font-size: 26px;
     }
@@ -184,7 +184,7 @@
 }
 
 @media (max-width: 600px) {
-  .blog {
+  .homeBlog {
     &__card {
       background: linear-gradient(#ffffff6d);
     }
@@ -194,27 +194,21 @@
     }
 
     &__cards__top {
-      background: linear-gradient(
-          rgba(255, 255, 255, 0.8),
-          rgba(255, 255, 255, 0.8)
-        ),
+      background: linear-gradient(rgba(255, 255, 255, 0.8),
+          rgba(255, 255, 255, 0.8)),
         url(../../assets/images/blog-top.png) no-repeat bottom right;
       border: 1px solid #eee;
     }
 
     &__cards-bottom {
-      background: linear-gradient(
-          rgba(255, 255, 255, 0.8),
-          rgba(255, 255, 255, 0.8)
-        ),
+      background: linear-gradient(rgba(255, 255, 255, 0.8),
+          rgba(255, 255, 255, 0.8)),
         url(../../assets/images/blog-bottom.png) no-repeat bottom right;
     }
 
     &__cards__right {
-      background: linear-gradient(
-          rgba(255, 255, 255, 0.8),
-          rgba(255, 255, 255, 0.8)
-        ),
+      background: linear-gradient(rgba(255, 255, 255, 0.8),
+          rgba(255, 255, 255, 0.8)),
         url(../../assets/images/blog-right.png) no-repeat bottom right;
     }
   }

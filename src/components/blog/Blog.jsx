@@ -1,9 +1,9 @@
 import React from "react";
 import { IoTime } from "react-icons/io5";
 
-import "./blog.scss";
+import "./homeBlog.scss";
 
-const Blog = () => {
+const HomeBlog = () => {
   // BLOG DATA MAP
   // const blogData = BLOG_DATA?.map((info) => (
   //   <div key={info.id} className="blog__card">
@@ -19,71 +19,71 @@ const Blog = () => {
   // ));
 
   return (
-    <div className="blog">
+    <div className="homeBlog">
       <div className="container">
-        <div className="blog__top">
-          <h2 className="blog__title">Our blog.</h2>
-          <button className="blog__btn">Go to our blog</button>
+        <div className="homeBlog__top">
+          <h2 className="homeBlog__title">Our homeBlog.</h2>
+          <button className="homeBlog__btn">Go to our homeBlog</button>
         </div>
-        <div className="blog__cards">
-          <div className="blog__cards__left">
-            <div className="blog__cards__top">
-              <div className="blog__card">
-                <span className="blog__card__time">
-                  <IoTime className="blog__card__time-icon" />
+        <div className="homeBlog__cards">
+          <div className="homeBlog__cards__left">
+            <div className="homeBlog__cards__top">
+              <div className="homeBlog__card">
+                <span className="homeBlog__card__time">
+                  <IoTime className="homeBlog__card__time-icon" />
                   12.09.2021
                 </span>
 
-                <h3 className="blog__card__title">
+                <h3 className="homeBlog__card__title">
                   How to plant spinach correctly in winter
                 </h3>
-                <p className="blog__card__text">
+                <p className="homeBlog__card__text">
                   In most areas, successive sowing can be done from early spring
                   until early winter, but more often during hotter months...
                 </p>
-                <button className="blog__card__btn">Read</button>
+                <button className="homeBlog__card__btn">Read</button>
               </div>
             </div>
-            <div className="blog__cards__bottom">
-              <div className="blog__card blog__cards-bottom">
-                <span className="blog__card__time">
-                  <IoTime className="blog__card__time-icon" />
+            <div className="homeBlog__cards__bottom">
+              <div className="homeBlog__card homeBlog__cards-bottom">
+                <span className="homeBlog__card__time">
+                  <IoTime className="homeBlog__card__time-icon" />
                   12.09.2021
                 </span>
 
-                <h3 className="blog__card__title">
+                <h3 className="homeBlog__card__title">
                   How to plant spinach correctly in winter
                 </h3>
-                <button className="blog__card__btn">Read</button>
+                <button className="homeBlog__card__btn">Read</button>
               </div>
-              <div className="blog__card blog__cards-bottom">
-                <span className="blog__card__time">
-                  <IoTime className="blog__card__time-icon" />
+              <div className="homeBlog__card homeBlog__cards-bottom">
+                <span className="homeBlog__card__time">
+                  <IoTime className="homeBlog__card__time-icon" />
                   12.09.2021
                 </span>
 
-                <h3 className="blog__card__title">
+                <h3 className="homeBlog__card__title">
                   How to plant spinach correctly in winter
                 </h3>
-                <button className="blog__card__btn">Read</button>
+                <button className="homeBlog__card__btn">Read</button>
               </div>
             </div>
           </div>
-          <div className="blog__cards__right">
-            <div className="blog__card">
-              <span className="blog__card__time">
-                <IoTime className="blog__card__time-icon" />
+          <div className="homeBlog__cards__right">
+            <div className="homeBlog__card">
+              <span className="homeBlog__card__time">
+                <IoTime className="homeBlog__card__time-icon" />
                 12.09.2021
               </span>
 
-              <h3 className="blog__card__title">
+              <h3 className="homeBlog__card__title">
                 How to plant spinach correctly in winter
               </h3>
-              <p className="blog__card__text">
+              <p className="homeBlog__card__text">
                 In most areas, successive sowing can be done from early spring
                 until early winter, but more often during hotter months...
               </p>
-              <button className="blog__card__btn">Read</button>
+              <button className="homeBlog__card__btn">Read</button>
             </div>
           </div>
         </div>
@@ -92,4 +92,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default HomeBlog;
