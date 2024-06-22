@@ -75,40 +75,40 @@ const HowTo = () => {
         </div>
         <div className="how__to__body__right">
           <h2>Related titles</h2>
-          <div className="blog__cards__right">
-            <div className="blog__card">
-              <span className="blog__card__time">
-                <IoTime className="blog__card__time-icon" />
+          <div className="homeBlog__cards__right__top">
+            <div className="homeBlog__card">
+              <span className="homeBlog__card__time">
+                <IoTime className="homeBlog__card__time-icon" />
                 12.09.2021
               </span>
 
-              <h3 className="blog__card__title">
+              <h3 className="homeBlog__card__title">
                 How to plant spinach correctly in winter
               </h3>
-              <p className="blog__card__text">
+              <p className="homeBlog__card__text">
                 In most areas, successive sowing can be done from early spring
                 until early winter, but more often during hotter months...
               </p>
-              <Link to={"how-to"} className="blog__card__btn">
+              <Link to={"/how-to"} className="blog__card__btn">
                 Read
               </Link>
             </div>
           </div>
-          <div className="blog__cards__right__bottom">
-            <div className="blog__card">
-              <span className="blog__card__time">
-                <IoTime className="blog__card__time-icon" />
+          <div className="homeBlog__cards__right__bottom">
+            <div className="homeBlog__card">
+              <span className="homeBlog__card__time">
+                <IoTime className="homeBlog__card__time-icon" />
                 12.09.2021
               </span>
 
-              <h3 className="blog__card__title">
+              <h3 className="homeBlog__card__title">
                 How to plant spinach correctly in winter
               </h3>
-              <p className="blog__card__text">
+              <p className="homeBlog__card__text">
                 In most areas, successive sowing can be done from early spring
                 until early winter, but more often during hotter months...
               </p>
-              <Link to={"how-to"} className="blog__card__btn">
+              <Link to={"/how-to"} className="blog__card__btn">
                 Read
               </Link>
             </div>
