@@ -44,13 +44,13 @@ const Products = ({ subtitle, data, isLoading, setOffset }) => {
           card
         )}
       </div>
-      {data?.length>8?<button
+      <button
         className="see__more__btn"
         disabled={isLoading}
         onClick={() => setOffset((p) => p + 1)}
       >
         {isLoading ? "Loading..." : "See more"}
-      </button>:<></>}
+      </button>
     </div>
   );
 };
