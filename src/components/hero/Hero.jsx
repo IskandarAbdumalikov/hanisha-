@@ -5,9 +5,12 @@ import bgHeroImg1 from "../../assets/images/mini-hero-right.svg";
 import bgHeroImg2 from "../../assets/images/mini-hero-left.svg";
 import olov from "../../assets/images/olov.png";
 // style
-import "./hero.scss";
+import './hero.scss'
+import { useNavigate } from 'react-router'
 
 const Hero = () => {
+  const navigate = useNavigate()
+
   return (
     <section className="hero container">
       <div className="hero-top">
@@ -25,9 +28,9 @@ const Hero = () => {
             <p className="hero-top-left__prices-new">$12.56</p>
             <p className="hero-top-left__prices-old">$15.56</p>
           </div>
-          <div className="hero-top-left__btns">
-            <button className="hero-top-left__btns-add">Add to cart</button>
-            <button className="hero-top-left__btns-discover">Discover</button>
+          <div className='hero-top-left__btns'>
+            <button className='hero-top-left__btns-add'>Add to cart</button>
+            <button className='hero-top-left__btns-discover'>Discover</button>
           </div>
         </div>
         <figure className="hero-top-right">
