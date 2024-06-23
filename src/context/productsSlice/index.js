@@ -36,6 +36,13 @@ export const productsApi = createApi({
       }),
       providesTags: ["Product"],
     }),
+    getCategory: builder.query({
+      query: (params) => ({
+        url: "category",
+        params,
+      }),
+      providesTags: ["Product"],
+    }),
   }),
 });
 
@@ -43,4 +50,5 @@ export const {
   useGetAllProductsQuery,
   useGetSingleProductQuery,
   useCreateProductMutation,
+  useGetCategoryQuery,
 } = productsApi;

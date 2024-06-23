@@ -3,7 +3,11 @@ import "./create-product.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LocalImages from "./LocalImages";
-import { useCreateProductMutation } from "../../../context/productsSlice";
+import {
+  useCreateProductMutation,
+  useGetCategoryQuery,
+} from "../../../context/productsSlice";
+import { UNITS } from "../../../static/data";
 
 const initialState = {
   title: "",
@@ -19,7 +23,8 @@ const CreateProduct = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialState);
   const [files, setFiles] = useState("");
-  const [createProduct, { data, isError, isLoading, isSuccess, error }] =
+  const { data: categories } = useGetCategoryQuery();
+  const [createProduct, { isError, isLoading, isSuccess, error }] =
     useCreateProductMutation(initialState);
 
   const handleChange = (e) => {
@@ -81,24 +86,40 @@ const CreateProduct = () => {
             name="oldPrice"
             type="number"
           />
-          <input
-            className="create-product__input"
-            required
+          <select
             value={formData.category}
-            onChange={handleChange}
-            placeholder="category"
-            name="category"
-            type="text"
-          />
-          <input
             className="create-product__input"
-            required
-            value={formData.units}
             onChange={handleChange}
-            placeholder="units"
+            name="category"
+            id=""
+            required
+          >
+            <option value="" disabled>
+              Select category
+            </option>
+            {categories?.data?.map((category) => (
+              <option key={category.id} value={category.title}>
+                {category.title}
+              </option>
+            ))}
+          </select>
+          <select
+            required
             name="units"
-            type="text"
-          />
+            onChange={handleChange}
+            id=""
+            value={formData.units}
+            className="create-product__input"
+          >
+            <option value="" disabled>
+              Select category
+            </option>
+            {UNITS?.map((unit, inx) => (
+              <option key={inx} value={unit}>
+                {unit}
+              </option>
+            ))}
+          </select>
           <input
             className="create-product__input"
             required
@@ -108,8 +129,8 @@ const CreateProduct = () => {
             name="description"
             type="text"
           />
-          <input
-            className="create-product__input"
+          <textarea
+            className="create-product__input create-product__input-textarea"
             required
             value={formData.info}
             onChange={handleChange}
@@ -117,19 +138,21 @@ const CreateProduct = () => {
             name="info"
             type="text"
           />
-          <label htmlFor="create-product__file" className="create__image">
-            <input
-              id="create-product__file"
-              className="create-product__input "
-              required
-              onChange={(e) => setFiles(e.target.files)}
-              multiple={true}
-              accept="image/*"
-              type="file"
-            />
-            <br />
+          <div className="create-product__file__wrapper">
+            <label htmlFor="create-product__file" className="create__image">
+              <input
+                id="create-product__file"
+                className="create-product__input "
+                required
+                onChange={(e) => setFiles(e.target.files)}
+                multiple={true}
+                accept="image/*"
+                type="file"
+              />
+              <br />
+            </label>
             <LocalImages files={files} />
-          </label>
+          </div>
           <button className="create-product__btn" disabled={isLoading}>
             {isLoading ? "Loading..." : "Create"}
           </button>

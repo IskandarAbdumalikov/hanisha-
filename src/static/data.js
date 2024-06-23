@@ -73,3 +73,5 @@ export const BLOG_DATA = [
     read: "Read",
   },
 ];
+
+export const UNITS = ["dona", "litr", "metr", "gramm", "kg"];
