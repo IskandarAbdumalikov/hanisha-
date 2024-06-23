@@ -34,6 +34,16 @@
       transform: scale(0.9);
     }
   }
+
+  &__file__wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+
+    img {
+      margin-right: 5px;
+    }
+  }
 }
 
 .create__image {
@@ -58,11 +68,11 @@
   cursor: pointer;
 }
 
-@media (max-width:900px) {
-  .create-product__form{
+@media (max-width: 900px) {
+  .create-product__form {
     grid-template-columns: 1fr;
     padding: 20px;
-    input{
+    input {
       width: 100%;
     }
   }

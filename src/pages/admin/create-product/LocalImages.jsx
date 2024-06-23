@@ -4,7 +4,7 @@ const Localmages = ({ files }) => {
   return (
     <div className="local__images">
       {Object.values(files).map((el, inx) => (
-        <img src={URL.createObjectURL(el)} key={inx} width={100} alt="" />
+        <img src={URL.createObjectURL(el)} key={inx} width={80} alt="" />
       ))}
     </div>
   );
