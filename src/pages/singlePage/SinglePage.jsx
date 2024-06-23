@@ -12,7 +12,7 @@ import star3 from "../../assets/icons/star3.svg";
 import star4 from "../../assets/icons/star4.svg";
 import star5 from "../../assets/icons/star5.svg";
 import trueImg from "../../assets/icons/true.svg";
-import Products from '../../components/products/Products'
+import Products from "../../components/products/Products";
 
 const SinglePage = () => {
   const { productId } = useParams();
@@ -363,7 +363,7 @@ const SinglePage = () => {
       </div>
       <div className="single__products">
         <h1>Related products.</h1>
-        <Products/>
+        <Products />
       </div>
     </section>
   );
