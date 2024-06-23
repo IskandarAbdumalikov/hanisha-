@@ -1,0 +1,53 @@
+.checkout-container {
+  max-width: 1240px;
+  margin: 30px auto;
+  width: 100%;
+  padding: 0 20px;
+  min-width: 340px;
+}
+// checkout container left
+.checkout-container-left {
+  &-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 600;
+      span {
+        font-size: 28px;
+      }
+    }
+    .left-div-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+
+      .bg-btns {
+        width: 22px;
+        border: 0;
+        height: 6px;
+        border-radius: 10px;
+        background-color: gray;
+        cursor: pointer;
+      }
+    }
+  }
+  .checkout-container-left-p {
+    width: 100%;
+  }
+}
+
+.left-div-btns .btnAtice {
+  width: 22px;
+  height: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 0;
+  background-color: lime;
+}

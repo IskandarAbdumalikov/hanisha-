@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CartProduct from './CartProduct'
 import TotalAmount from '../../components/total-amount'
+import Checkout from './checkout/Checkout'
 import './cart.scss'
 
 const Cart = () => {
-  return (
+  const [open, setOpen] = useState(false)
+
+  return open ? <Checkout /> : (
     <div className='cart-container'>
       <div className="cart-left">
         <div className='cart-title'>
@@ -31,7 +34,7 @@ const Cart = () => {
         <h4 className='cart-right-h4'>Order summary</h4>
         <div className='cart-right-items'>
           <p className='cart-right-items-p'>3 ITEMS</p>
-          <h5 className='cart-right-items-h5'>$12.56</h5>
+          <h5 className='cart-right-items-h5'>$37.68</h5>
         </div>
         <select className='cart-right-select' name="" id="">
           <option value="shopping"> Type of delievery Shipping</option>
@@ -43,7 +46,7 @@ const Cart = () => {
         </label>
         <hr />
         <TotalAmount key={'3'} name={'Total amount'} price={'$12.56'} />
-        <button className='cart-right-btn' type='button'>Checkout</button>
+        <button onClick={() => setOpen(p => !p)} className='cart-right-btn' type='button'>Checkout</button>
       </div>
     </div>
   )
