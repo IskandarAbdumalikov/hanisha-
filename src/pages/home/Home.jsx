@@ -9,12 +9,16 @@ import { useGetAllProductsQuery } from "../../context/productsSlice";
 
 const Home = () => {
   const [subtitle, setSubTitle] = useState(true);
-  let { data, isLoading } = useGetAllProductsQuery({ limit: 8, search: "" });
+  const [offset, setOffset] = useState(1);
+  let { data, isLoading } = useGetAllProductsQuery({
+    limit: 8 * offset,
+    search: "",
+  });
 
   return (
     <section>
       <Hero />
-      <Products data={data} isLoading={isLoading} />
+      <Products setOffset={setOffset} data={data} isLoading={isLoading} />
       <HomeBlog />
       <Clients />
       <Result />

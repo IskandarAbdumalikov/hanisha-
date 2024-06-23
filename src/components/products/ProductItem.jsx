@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import "./products.scss";
 
 export const ProductItem = ({ id, urls, title, price }) => {
-  console.log(urls);
   return (
     <div key={id} className="products__cards__card">
       <Link to={`/products/${id}`}>
@@ -31,7 +30,7 @@ export const ProductItem = ({ id, urls, title, price }) => {
           <LuShoppingCart className="" />
         </button>
         <button className="heart">
-          <CiHeart />{" "}
+          <CiHeart />
         </button>
       </div>
     </div>

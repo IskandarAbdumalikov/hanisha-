@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 
-import { useGetAllProductsQuery } from "../../context/productsSlice";
 import { useGetCategoriesQuery } from "../../context/categorySlice";
 
 import "./products.scss";
 import { ProductItem } from "./ProductItem";
-import { useLocation } from "react-router-dom";
 
-const Products = ({ subtitle, data, isLoading }) => {
+const Products = ({ subtitle, data, isLoading, setOffset }) => {
   const { data: categoriesData } = useGetCategoriesQuery();
 
   let categories = categoriesData?.data.map((el) => (
@@ -46,6 +44,13 @@ const Products = ({ subtitle, data, isLoading }) => {
           card
         )}
       </div>
+      {data?.length>8?<button
+        className="see__more__btn"
+        disabled={isLoading}
+        onClick={() => setOffset((p) => p + 1)}
+      >
+        {isLoading ? "Loading..." : "See more"}
+      </button>:<></>}
     </div>
   );
 };

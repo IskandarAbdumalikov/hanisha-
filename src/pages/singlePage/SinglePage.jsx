@@ -20,8 +20,9 @@ import Products from "../../components/products/Products";
 const SinglePage = () => {
   const { productId } = useParams();
   let [imageOrder, setImageOrder] = useState(0);
+  let [offset, setOffset] = useState(0);
   const [pack, setPack] = useState(0);
-  let { data:allData, isLoading } = useGetAllProductsQuery({ limit: 8, search: "" });
+  let { data:allData, isLoading } = useGetAllProductsQuery({ limit: 8*offset, search: "" });
 
   // console.log(pack);
 
@@ -368,7 +369,7 @@ const SinglePage = () => {
       </div>
       <div className="single__products">
         <h1>Related products.</h1>
-        <Products data={allData} isLoading={isLoading} />
+        <Products setOffset={setOffset} data={allData} isLoading={isLoading} />
       </div>
     </section>
   );

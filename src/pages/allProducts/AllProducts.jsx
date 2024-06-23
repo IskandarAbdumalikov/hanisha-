@@ -6,7 +6,8 @@ import { useGetAllProductsQuery } from "../../context/productsSlice";
 const AllProducts = () => {
   const [subtitle, setSubTitle] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  let { data,isLoading } = useGetAllProductsQuery({ search: searchValue, limit: 8 });
+  const [offset,setOffset] = useState(1)
+  let { data,isLoading } = useGetAllProductsQuery({ search: searchValue, limit: 8*offset });
 
   return (
     <div className="allproducts">
@@ -15,7 +16,7 @@ const AllProducts = () => {
         setSearchValue={setSearchValue}
         subtitle={subtitle}
       />
-      <Products isLoading={isLoading} data={data} />
+      <Products setOffset={setOffset} isLoading={isLoading} data={data} />
     </div>
   );
 };
