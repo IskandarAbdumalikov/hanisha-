@@ -112,7 +112,7 @@ const CreateProduct = () => {
             className="create-product__input"
           >
             <option value="" disabled>
-              Select category
+              Select units
             </option>
             {UNITS?.map((unit, inx) => (
               <option key={inx} value={unit}>
