@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { useGetSingleProductQuery } from "../../context/productsSlice";
+import {
+  useGetAllProductsQuery,
+  useGetSingleProductQuery,
+} from "../../context/productsSlice";
 import { useLocation, useParams } from "react-router-dom";
 import "./singlePage.scss";
 import like from "../../assets/icons/like.svg";
@@ -18,6 +21,8 @@ const SinglePage = () => {
   const { productId } = useParams();
   let [imageOrder, setImageOrder] = useState(0);
   const [pack, setPack] = useState(0);
+  let { data:allData, isLoading } = useGetAllProductsQuery({ limit: 8, search: "" });
+
   // console.log(pack);
 
   const { data } = useGetSingleProductQuery(productId);
@@ -363,7 +368,7 @@ const SinglePage = () => {
       </div>
       <div className="single__products">
         <h1>Related products.</h1>
-        <Products />
+        <Products data={allData} isLoading={isLoading} />
       </div>
     </section>
   );

@@ -5,14 +5,16 @@ import Blog from "../../components/blog/Blog";
 import Clients from "../../components/clients/Clients";
 import Result from "../../components/result/Result";
 import HomeBlog from "../../components/blog/Blog";
+import { useGetAllProductsQuery } from "../../context/productsSlice";
 
 const Home = () => {
   const [subtitle, setSubTitle] = useState(true);
+  let { data, isLoading } = useGetAllProductsQuery({ limit: 8, search: "" });
 
   return (
     <section>
       <Hero />
-      <Products />
+      <Products data={data} isLoading={isLoading} />
       <HomeBlog />
       <Clients />
       <Result />
