@@ -6,7 +6,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./context/store.js";
 // import numberBrm from "number-brm";
-import "number-brm";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
