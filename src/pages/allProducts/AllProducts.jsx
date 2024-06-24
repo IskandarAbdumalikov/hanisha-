@@ -6,8 +6,16 @@ import { useGetAllProductsQuery } from "../../context/productsSlice";
 const AllProducts = () => {
   const [subtitle, setSubTitle] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const [offset,setOffset] = useState(1)
-  let { data,isLoading } = useGetAllProductsQuery({ search: searchValue, limit: 8*offset });
+  const [page, setPage] = useState(+sessionStorage.getItem("pageCount") || 1);
+  const [perPageCount, setPerPageCount] = useState(
+    +localStorage.getItem("selectPageCount") || 8
+  );
+
+  let { data, isLoading } = useGetAllProductsQuery({
+    search: searchValue,
+    limit: perPageCount,
+    page,
+  });
 
   return (
     <div className="allproducts">
@@ -16,7 +24,14 @@ const AllProducts = () => {
         setSearchValue={setSearchValue}
         subtitle={subtitle}
       />
-      <Products setOffset={setOffset} isLoading={isLoading} data={data} />
+      <Products
+        setPage={setPage}
+        page={page}
+        perPageCount={perPageCount}
+        setPerPageCount={setPerPageCount}
+        isLoading={isLoading}
+        data={data}
+      />
     </div>
   );
 };

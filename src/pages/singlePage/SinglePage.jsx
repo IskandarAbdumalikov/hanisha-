@@ -20,9 +20,17 @@ import Products from "../../components/products/Products";
 const SinglePage = () => {
   const { productId } = useParams();
   let [imageOrder, setImageOrder] = useState(0);
-  let [offset, setOffset] = useState(0);
   const [pack, setPack] = useState(0);
-  let { data:allData, isLoading } = useGetAllProductsQuery({ limit: 8*offset, search: "" });
+  const [page, setPage] = useState(+sessionStorage.getItem("pageCount") || 1);
+  const [perPageCount, setPerPageCount] = useState(
+    +localStorage.getItem("selectPageCount") || 8
+  );
+
+  let { data:allData, isLoading } = useGetAllProductsQuery({
+    search: '',
+    limit: perPageCount,
+    page,
+  });
 
   // console.log(pack);
 
@@ -369,7 +377,14 @@ const SinglePage = () => {
       </div>
       <div className="single__products">
         <h1>Related products.</h1>
-        <Products setOffset={setOffset} data={allData} isLoading={isLoading} />
+        <Products
+          setPage={setPage}
+          page={page}
+          perPageCount={perPageCount}
+          setPerPageCount={setPerPageCount}
+          isLoading={isLoading}
+          data={allData}
+        />
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import "./products.scss";
 
-export const ProductItem = ({ id, urls, title, price }) => {
+export const ProductItem = ({ id, urls, title, price, setShowModule }) => {
   return (
     <div key={id} className="products__cards__card">
       <Link to={`/products/${id}`}>
@@ -22,7 +22,7 @@ export const ProductItem = ({ id, urls, title, price }) => {
         <FaStar className="stars" />
       </div>
       <div className="products__cards__card-title">
-        <span>{title}</span>
+        <span style={{cursor:"pointer"}} onClick={()=>setShowModule(true)}>{title}</span>
       </div>
       <div className="products__cards__card-shop">
         <p>${price}</p>

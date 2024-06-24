@@ -1,26 +1,56 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useGetCategoriesQuery } from '../../context/categorySlice';
+import './products.scss';
+import { ProductItem } from './ProductItem';
+import { Box, FormControl, InputLabel, MenuItem, Pagination, Select } from '@mui/material';
+import SingleModule from '../singleModule/SingleModule';
 
-import { useGetCategoriesQuery } from "../../context/categorySlice";
-
-import "./products.scss";
-import { ProductItem } from "./ProductItem";
-
-const Products = ({ subtitle, data, isLoading, setOffset }) => {
+const Products = ({
+  subtitle,
+  data,
+  isLoading,
+  page,
+  setPage,
+  perPageCount,
+  setPerPageCount,
+}) => {
   const { data: categoriesData } = useGetCategoriesQuery();
+  const [showModule, setShowModule] = useState(false); // State to control modal visibility
+  const [selectedProduct, setSelectedProduct] = useState(null); // State to hold selected product
 
-  let categories = categoriesData?.data.map((el) => (
+  const totalCount = Math.ceil(data?.data?.count / perPageCount) || 1;
+
+  const handleViewMoreClick = (product) => {
+    setSelectedProduct(product);
+    setShowModule(true);
+  };
+
+  const handleChange = (_, value) => {
+    setPage(value);
+    sessionStorage.setItem('pageCount', value);
+  };
+
+  const handleSelectChange = (e) => {
+    setPerPageCount(e.target.value);
+    localStorage.setItem('selectPageCount', e.target.value);
+    setPage(1);
+    sessionStorage.setItem('pageCount', 1);
+  };
+
+  const categories = categoriesData?.data.map((el) => (
     <li key={el.id}>
       <data value={el.title}>{el.title}</data>
     </li>
   ));
 
-  let card = data?.data.products.map((el) => (
+  const cards = data?.data.products.map((el) => (
     <ProductItem
       key={el.id}
       id={el.id}
       urls={el.urls[0]}
       title={el.title}
       price={el.price}
+      onMoreClick={() => handleViewMoreClick(el)} // Pass product to open modal
     />
   ));
 
@@ -41,16 +71,31 @@ const Products = ({ subtitle, data, isLoading, setOffset }) => {
             <h1>Loading...?</h1>
           </div>
         ) : (
-          card
+          cards
         )}
       </div>
-      <button
-        className="see__more__btn"
-        disabled={isLoading}
-        onClick={() => setOffset((p) => p + 1)}
-      >
-        {isLoading ? "Loading..." : "See more"}
-      </button>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }} py={'20px'}>
+        <Pagination onChange={handleChange} count={totalCount} color="primary" page={page} />
+      </Box>
+      <Box>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">page</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={perPageCount}
+            label="Age"
+            onChange={handleSelectChange}
+          >
+            <MenuItem value={8}>8</MenuItem>
+            <MenuItem value={12}>12</MenuItem>
+            <MenuItem value={16}>16</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      {showModule && selectedProduct && (
+        <SingleModule product={selectedProduct} setShowModule={setShowModule} />
+      )}
     </div>
   );
 };
