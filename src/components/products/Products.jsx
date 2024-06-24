@@ -5,6 +5,8 @@ import { useGetCategoriesQuery } from "../../context/categorySlice";
 import "./products.scss";
 import { ProductItem } from "./ProductItem";
 import { Box, FormControl, InputLabel, MenuItem, Pagination, Select } from "@mui/material";
+import SingleModule from "../singleModule/SingleModule";
+
 
 const Products = ({
   subtitle,
@@ -17,6 +19,8 @@ const Products = ({
 }) => {
   const { data: categoriesData } = useGetCategoriesQuery();
 
+  const [showModule, setShowModule] = useState(false);
+
   const totalCount = Math.ceil(data?.data?.count / perPageCount) || 1;
 
   let categories = categoriesData?.data.map((el) => (
@@ -24,6 +28,8 @@ const Products = ({
       <data value={el.title}>{el.title}</data>
     </li>
   ));
+
+
 
   const handleChange = (_, value) => {
     setPage(value);
@@ -44,6 +50,7 @@ const Products = ({
       urls={el.urls[0]}
       title={el.title}
       price={el.price}
+      setShowModule={setShowModule}
     />
   ));
 
@@ -91,6 +98,7 @@ const Products = ({
           </Select>
         </FormControl>
       </Box>
+      {showModule?<SingleModule setShowModule={setShowModule}/>:<></>}
     </div>
   );
 };
