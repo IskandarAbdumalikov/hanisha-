@@ -51,8 +51,10 @@ const Products = ({
         urls={el.urls[0]}
         title={el.title}
         price={el.price}
+        data = {el}
+        handleViewMore={handleViewMore}
       />
-      <button className="view-more-btn" onClick={() => handleViewMore(el)}>View More</button>
+      
     </div>
   ));
 

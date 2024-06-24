@@ -6,7 +6,15 @@ import { Link } from "react-router-dom";
 
 import "./products.scss";
 
-export const ProductItem = ({ id, urls, title, price, setShowModule }) => {
+export const ProductItem = ({
+  id,
+  urls,
+  title,
+  price,
+  setShowModule,
+  handleViewMore,
+  data
+}) => {
   return (
     <div key={id} className="products__cards__card">
       <Link to={`/products/${id}`}>
@@ -22,7 +30,9 @@ export const ProductItem = ({ id, urls, title, price, setShowModule }) => {
         <FaStar className="stars" />
       </div>
       <div className="products__cards__card-title">
-        <span style={{cursor:"pointer"}} onClick={()=>setShowModule(true)}>{title}</span>
+        <span style={{ cursor: "pointer" }} onClick={()=>handleViewMore(data)}>
+          {title}
+        </span>
       </div>
       <div className="products__cards__card-shop">
         <p>${price}</p>
