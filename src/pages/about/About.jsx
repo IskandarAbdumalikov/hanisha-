@@ -6,11 +6,14 @@ import MeetFirst from "../../assets/images/meet1.png";
 import MeetSecond from "../../assets/images/meet2.png";
 import MeetThird from "../../assets/images/meet3.png";
 import MeetFourth from "../../assets/images/meet4.png";
+import BlogHero from "../../components/blog-hero/BlogHero";
 
 const About = () => {
   return (
     <>
-      <div style={{ marginBottom: "100px" }}></div>
+      <div className="container" style={{ marginBottom: "100px" }}>
+        <BlogHero/>
+      </div>
       <Result />
       <div style={{ marginBottom: "40px" }}></div>
       <section className="our-story">

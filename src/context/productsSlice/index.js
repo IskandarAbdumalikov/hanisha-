@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://market.ilyosbekdev.uz/",
+    baseUrl: "https://bazar.ilyosbekdev.uz/",
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("x-auth-token");
       if (token) {
@@ -30,9 +30,16 @@ export const productsApi = createApi({
     }),
     createProduct: builder.mutation({
       query: (body) => ({
-        url: "products",
+        url: "products/create",
         method: "POST",
         body,
+      }),
+      providesTags: ["Product"],
+    }),
+    getCategory: builder.query({
+      query: (params) => ({
+        url: "category",
+        params,
       }),
       providesTags: ["Product"],
     }),
@@ -43,4 +50,5 @@ export const {
   useGetAllProductsQuery,
   useGetSingleProductQuery,
   useCreateProductMutation,
+  useGetCategoryQuery,
 } = productsApi;

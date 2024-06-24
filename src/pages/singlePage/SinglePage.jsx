@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { useGetSingleProductQuery } from "../../context/productsSlice";
+import {
+  useGetAllProductsQuery,
+  useGetSingleProductQuery,
+} from "../../context/productsSlice";
 import { useLocation, useParams } from "react-router-dom";
 import "./singlePage.scss";
 import like from "../../assets/icons/like.svg";
@@ -12,12 +15,15 @@ import star3 from "../../assets/icons/star3.svg";
 import star4 from "../../assets/icons/star4.svg";
 import star5 from "../../assets/icons/star5.svg";
 import trueImg from "../../assets/icons/true.svg";
-import Products from '../../components/products/Products'
+import Products from "../../components/products/Products";
 
 const SinglePage = () => {
   const { productId } = useParams();
   let [imageOrder, setImageOrder] = useState(0);
+  let [offset, setOffset] = useState(0);
   const [pack, setPack] = useState(0);
+  let { data:allData, isLoading } = useGetAllProductsQuery({ limit: 8*offset, search: "" });
+
   // console.log(pack);
 
   const { data } = useGetSingleProductQuery(productId);
@@ -363,7 +369,7 @@ const SinglePage = () => {
       </div>
       <div className="single__products">
         <h1>Related products.</h1>
-        <Products/>
+        <Products setOffset={setOffset} data={allData} isLoading={isLoading} />
       </div>
     </section>
   );
