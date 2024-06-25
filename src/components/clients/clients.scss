@@ -40,6 +40,11 @@
             line-height: 25px;
             letter-spacing: -0.04em;
             color: #1F2533;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
         }
     }
 
@@ -67,6 +72,11 @@
             font-weight: 300;
             line-height: 28px;
             color: #1F2533;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 5;
+            line-clamp: 5;
         }
     }
 }
