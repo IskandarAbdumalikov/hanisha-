@@ -71,8 +71,7 @@ const Products = ({
       </div>
       <div className="products__cards">
         {isLoading ? (
-          <>
-            <div className="products__loading">
+          <>        
               <div className="products__loading__card">
                 <div className="products__loading__card-img"></div>
                 <div className="products__loading__card-title"></div>
@@ -119,7 +118,6 @@ const Products = ({
                 <div className="products__loading__card-title"></div>
                 <div className="products__loading__card-p"></div>
               </div>
-            </div>
           </>
         ) : (
           card
