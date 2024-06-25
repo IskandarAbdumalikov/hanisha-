@@ -78,7 +78,6 @@
 @media (min-width: 700px) {
   .cart-product {
     width: 100%;
-    transition-duration: 0.5s all inline;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,6 +108,12 @@
     display: block;
     border: 0;
     border-radius: 50%;
+  }
+  .cart-product-div1-h4-2 {
+    width: 300px;
+  }
+  .cart-product-div4 {
+    width: 100px;
   }
   .cart-product-div1-h4-2,
   .cart-product-div1-img-2 {

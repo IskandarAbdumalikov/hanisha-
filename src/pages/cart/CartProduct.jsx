@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { useDispatch } from 'react-redux';
 import { TiDelete } from "react-icons/ti";
 import cartImage from '../../assets/images/cart-imagee.svg'
-import { addToShopCount, removeToShopCount } from '../../context/cartSlice';
+import { addToShopCount, deleteToCart, removeToShopCount } from '../../context/cartSlice';
 import './cart-product.scss'
 
 
@@ -11,8 +11,8 @@ const CartProduct = ({ cart }) => {
 
     return (
         <div className='cart-product'>
-            <button button className='cart-product-x' >
-                <TiDelete color='red' fontSize={26} />
+            <button button className='cart-product-x' onClick={() => dispatch(deleteToCart(cart.id))} >
+                <TiDelete color='red' fontSize={46} />
             </button >
             <div className="cart-product-div1">
                 <h4 className='cart-product-div1-h4'>SEEDRA Corn - Bodacious Hybrid Seeds for Indoor and Outdoor Planting</h4>
@@ -21,10 +21,10 @@ const CartProduct = ({ cart }) => {
                 </figure>
             </div>
             <figure className='cart-product-div1-img-2'>
-                <TiDelete className='cart-product-closeBtn' color='red' fontSize={24} />
+                <TiDelete className='cart-product-closeBtn' color='red' onClick={() => dispatch(deleteToCart(cart.id))} fontSize={24} />
                 <img src={cart?.urls.length ? cart?.urls[0] : cartImage} width={60} height={70} style={{ padding: 2, border: '1px solid gray', borderRadius: 10 }} alt="" />
             </figure>
-            <h4 className='cart-product-div1-h4-2'>SEEDRA Corn - Bodacious Hybrid Seeds for Indoor and Outdoor Planting</h4>
+            <h4 className='cart-product-div1-h4-2'>{cart?.title}</h4>
             <div className="cart-product-div2">
                 <p className='div-p'>AMOUNT</p>
                 <ul className='cart-product-div2-crud'>
