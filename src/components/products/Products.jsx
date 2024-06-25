@@ -44,7 +44,7 @@ const Products = ({
     setShowModule(true);
   };
 
-  let card = data?.data.products.map((el) => (
+  let card = data?.data?.products?.map((el) => (
     <div key={el.id} className="product-card">
       <ProductItem
         id={el.id}

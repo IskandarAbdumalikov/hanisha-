@@ -72,7 +72,9 @@ const Header = () => {
           </div> */}
         </div>
         <div className="header__nav__btns">
-          <img src={like} alt="" />
+          <NavLink to={'/wishlist'}>
+            <img src={like} alt="" />
+          </NavLink>
           <NavLink to={"/cart"}>
             <img src={cart} alt="" />
           </NavLink>

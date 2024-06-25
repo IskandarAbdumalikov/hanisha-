@@ -17,6 +17,7 @@ import SinglePage from "./pages/singlePage/SinglePage";
 import CreateProduct from "./pages/admin/create-product/CreateProduct";
 import ManageProduct from "./pages/admin/manage-product/ManageProduct";
 import HowTo from "./pages/howTo/HowTo";
+import Wishlist from "./pages/wishlist/Wishlist";
 
 const App = () => {
   return (
@@ -25,11 +26,12 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
-          <Route path="how-to" element={<HowTo/>}/>
+          <Route path="how-to" element={<HowTo />} />
           <Route path="about" element={<About />} />
           <Route path="all-products" element={<AllProducts />} />
           <Route path="blog" element={<Blog />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="wishlist" element={<Wishlist />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="contact" element={<Contact />} />
           <Route path="payment" element={<Payment />} />
