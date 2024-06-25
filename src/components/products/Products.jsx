@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { useGetCategoriesQuery } from "../../context/categorySlice";
 import "./products.scss";
 import { ProductItem } from "./ProductItem";
@@ -51,10 +51,10 @@ const Products = ({
         urls={el.urls[0]}
         title={el.title}
         price={el.price}
-        data = {el}
+        data={el}
         handleViewMore={handleViewMore}
       />
-      
+
     </div>
   ));
 
@@ -71,9 +71,56 @@ const Products = ({
       </div>
       <div className="products__cards">
         {isLoading ? (
-          <div className="products__loading">
-            <h1>Loading...?</h1>
-          </div>
+          <>
+            <div className="products__loading">
+              <div className="products__loading__card">
+                <div className="products__loading__card-img"></div>
+                <div className="products__loading__card-title"></div>
+                <div className="products__loading__card-p"></div>
+
+              </div>
+              <div className="products__loading__card">
+                <div className="products__loading__card-img"></div>
+                <div className="products__loading__card-title"></div>
+                <div className="products__loading__card-p"></div>
+              
+              </div>
+              <div className="products__loading__card">
+                <div className="products__loading__card-img"></div>
+                <div className="products__loading__card-title"></div>
+                <div className="products__loading__card-p"></div>
+                
+              </div>
+              <div className="products__loading__card">
+                <div className="products__loading__card-img"></div>
+                <div className="products__loading__card-title"></div>
+                <div className="products__loading__card-p"></div>
+              </div>
+              <div className="products__loading__card">
+                <div className="products__loading__card-img"></div>
+                <div className="products__loading__card-title"></div>
+                <div className="products__loading__card-p"></div>
+
+              </div>
+              <div className="products__loading__card">
+                <div className="products__loading__card-img"></div>
+                <div className="products__loading__card-title"></div>
+                <div className="products__loading__card-p"></div>
+              
+              </div>
+              <div className="products__loading__card">
+                <div className="products__loading__card-img"></div>
+                <div className="products__loading__card-title"></div>
+                <div className="products__loading__card-p"></div>
+                
+              </div>
+              <div className="products__loading__card">
+                <div className="products__loading__card-img"></div>
+                <div className="products__loading__card-title"></div>
+                <div className="products__loading__card-p"></div>
+              </div>
+            </div>
+          </>
         ) : (
           card
         )}
@@ -86,22 +133,7 @@ const Products = ({
           page={page}
         />
       </Box>
-      <Box>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">page</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={perPageCount}
-            label="Age"
-            onChange={handleSelectChange}
-          >
-            <MenuItem value={8}>8</MenuItem>
-            <MenuItem value={12}>12</MenuItem>
-            <MenuItem value={16}>16</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
+
       {showModule && <SingleModule product={selectedProduct} setShowModule={setShowModule} />}
     </div>
   );
