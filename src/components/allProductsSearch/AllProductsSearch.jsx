@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import "./AllProductsSearch.scss";
 
@@ -25,4 +25,4 @@ const AllProductsSearch = ({ setSearchValue, searchValue }) => {
   );
 };
 
-export default AllProductsSearch;
+export default memo(AllProductsSearch);

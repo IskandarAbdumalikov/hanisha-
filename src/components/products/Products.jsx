@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 
 import { useGetCategoriesQuery } from "../../context/categorySlice";
 
@@ -55,4 +55,4 @@ const Products = ({ subtitle, data, isLoading, setOffset }) => {
   );
 };
 
-export default Products;
+export default memo(Products);
