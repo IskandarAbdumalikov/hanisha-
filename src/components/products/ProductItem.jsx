@@ -5,6 +5,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 import "./products.scss";
+import { useAddCartMutation } from "../../context/cartSlice";
 
 export const ProductItem = ({
   id,
@@ -15,6 +16,15 @@ export const ProductItem = ({
   handleViewMore,
   data
 }) => {
+
+  const [addCart, { data: cartData }] = useAddCartMutation()
+  console.log(cartData);
+
+  const handleAddToCart = (newCart) => {
+    console.log(newCart);
+    addCart(newCart);//error bor
+  }
+
   return (
     <div key={id} className="products__cards__card">
       <Link to={`/products/${id}`}>
@@ -30,13 +40,13 @@ export const ProductItem = ({
         <FaStar className="stars" />
       </div>
       <div className="products__cards__card-title">
-        <span style={{ cursor: "pointer" }} onClick={()=>handleViewMore(data)}>
+        <span style={{ cursor: "pointer" }} onClick={() => handleViewMore(data)}>
           {title}
         </span>
       </div>
       <div className="products__cards__card-shop">
         <p>${price}</p>
-        <button className="shop">
+        <button className="shop" onClick={() => handleAddToCart(data)}>
           <LuShoppingCart className="" />
         </button>
         <button className="heart">
