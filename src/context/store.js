@@ -3,10 +3,10 @@ import { productsApi } from "../context/productsSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { categoriesApi } from "../context/categorySlice";
 import { userApi } from "./userSlice";
-import wishlistSlice from "./wishlistSlice/wishlistSlice";
 
 export const store = configureStore({
   reducer: {
+    cartData: cartReducer,
     [productsApi.reducerPath]: productsApi.reducer,
     [categoriesApi.reducerPath]: categoriesApi.reducer,
     [userApi.reducerPath]: userApi.reducer,

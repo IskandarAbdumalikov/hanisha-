@@ -1,7 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { CiHeart } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import { LuShoppingCart } from "react-icons/lu";
+import { addToCart } from "../../context/cartSlice";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { like } from "../../context/wishlistSlice/wishlistSlice.js";
@@ -15,11 +18,8 @@ export const ProductItem = ({
   price,
   setShowModule,
   handleViewMore,
-  data,
+  data
 }) => {
-  const dispatch = useDispatch();
-  const wishlistData = useSelector((state) => state.wishlist.value);
-
   return (
     <div key={id} className="products__cards__card">
       <Link to={`/products/${id}`}>
@@ -35,16 +35,13 @@ export const ProductItem = ({
         <FaStar className="stars" />
       </div>
       <div className="products__cards__card-title">
-        <span
-          style={{ cursor: "pointer" }}
-          onClick={() => handleViewMore(data)}
-        >
+        <span style={{ cursor: "pointer" }} onClick={()=>handleViewMore(data)}>
           {title}
         </span>
       </div>
       <div className="products__cards__card-shop">
         <p>${price}</p>
-        <button className="shop">
+        <button className="shop" onClick={handleAdd}>
           <LuShoppingCart className="" />
         </button>
         <button onClick={() => dispatch(like(data))} className="heart">
