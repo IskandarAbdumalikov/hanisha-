@@ -2,10 +2,12 @@ import React, { memo, useState } from 'react'
 import { TiDelete } from "react-icons/ti";
 import cartImage from '../../assets/images/cart-imagee.svg'
 import './cart-product.scss'
+import { useDispatch } from 'react-redux';
+import { addToShopCount, removeToShopCount } from '../../context/cartSlice';
 
 
-const CartProduct = () => {
-    const [count, setCount] = useState(2)
+const CartProduct = ({ cart }) => {
+    const dispatch = useDispatch()
 
     return (
         <div className='cart-product'>
@@ -15,29 +17,29 @@ const CartProduct = () => {
             <div className="cart-product-div1">
                 <h4 className='cart-product-div1-h4'>SEEDRA Corn - Bodacious Hybrid Seeds for Indoor and Outdoor Planting</h4>
                 <figure className='cart-product-div1-img'>
-                    <img src={cartImage} alt="" />
+                    <img src={cart?.urls[0]} alt="" />
                 </figure>
             </div>
             <figure className='cart-product-div1-img-2'>
                 <TiDelete className='cart-product-closeBtn' color='red' fontSize={24} />
-                <img src={cartImage} alt="" />
+                <img src={cart?.urls.length ? cart?.urls[0] : cartImage} width={60} height={70} style={{ padding: 2, border: '1px solid gray', borderRadius: 10 }} alt="" />
             </figure>
             <h4 className='cart-product-div1-h4-2'>SEEDRA Corn - Bodacious Hybrid Seeds for Indoor and Outdoor Planting</h4>
             <div className="cart-product-div2">
                 <p className='div-p'>AMOUNT</p>
                 <ul className='cart-product-div2-crud'>
-                    <button className='cart-product-div2-crud-btn' disabled={count <= 0} onClick={() => setCount(p => p - 1)}>-</button>
-                    <li className='counter'>{count}</li>
-                    <button className='cart-product-div2-crud-btn' onClick={() => setCount(p => p + 1)}>+</button>
+                    <button className='cart-product-div2-crud-btn' onClick={() => dispatch(removeToShopCount(cart?.id))}>-</button>
+                    <li className='counter'>{cart?.shopCount}</li>
+                    <button className='cart-product-div2-crud-btn' onClick={() => dispatch(addToShopCount(cart?.id))}>+</button>
                 </ul>
             </div>
             <div className="cart-product-div3">
                 <p className='div-p'>PRICE</p>
-                <h5>$12.56</h5>
+                <h5>${cart?.price}</h5>
             </div>
             <div className="cart-product-div4">
                 <p className='div-p'>TOTAL</p>
-                <h5>${((12.56) * count).brm()}</h5>
+                <h5>${((cart?.price) * cart?.shopCount).brm()}</h5>
             </div>
         </div>
     )

@@ -3,21 +3,20 @@ import { productsApi } from "../context/productsSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { categoriesApi } from "../context/categorySlice";
 import { userApi } from "./userSlice";
-import { cartApi } from "./cartSlice";
+import cartReducer from "./cartSlice";
 
 export const store = configureStore({
   reducer: {
+    cartData: cartReducer,
     [productsApi.reducerPath]: productsApi.reducer,
     [categoriesApi.reducerPath]: categoriesApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
-    [cartApi.reducerPath]: cartApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(categoriesApi.middleware)
       .concat(userApi.middleware)
-      .concat(productsApi.middleware)
-      .concat(cartApi.middleware),
+      .concat(productsApi.middleware),
 });
 
 setupListeners(store.dispatch);

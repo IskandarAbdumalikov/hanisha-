@@ -5,24 +5,14 @@ import { LuShoppingCart } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 import "./products.scss";
-import { useAddCartMutation } from "../../context/cartSlice";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../context/cartSlice";
 
-export const ProductItem = ({
-  id,
-  urls,
-  title,
-  price,
-  setShowModule,
-  handleViewMore,
-  data
-}) => {
+export const ProductItem = ({ id, urls, title, price, setShowModule, handleViewMore, data }) => {
+  const dispatch = useDispatch()
 
-  const [addCart, { data: cartData }] = useAddCartMutation()
-  console.log(cartData);
-
-  const handleAddToCart = (newCart) => {
-    console.log(newCart);
-    addCart(newCart);//error bor
+  const handleAdd = () => {
+    dispatch(addToCart({ ...data, shopCount: 1 }))
   }
 
   return (
@@ -46,7 +36,7 @@ export const ProductItem = ({
       </div>
       <div className="products__cards__card-shop">
         <p>${price}</p>
-        <button className="shop" onClick={() => handleAddToCart(data)}>
+        <button className="shop" onClick={handleAdd}>
           <LuShoppingCart className="" />
         </button>
         <button className="heart">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import CartProduct from './CartProduct'
 import TotalAmount from '../../components/total-amount'
 import Checkout from './checkout/Checkout'
@@ -6,6 +7,7 @@ import './cart.scss'
 
 const Cart = () => {
   const [open, setOpen] = useState(false)
+  const carts = useSelector(state => state.cartData.value)
 
   return open ? <Checkout /> : (
     <div className='cart-container'>
@@ -23,11 +25,11 @@ const Cart = () => {
             <p className='cart-title-p'>TOTAL</p>
           </div>
         </div>
-        <CartProduct />
-        <CartProduct />
-        <CartProduct />
-        <CartProduct />
-        <CartProduct />
+        {
+          carts?.map(cart => (
+            <CartProduct key={cart?.id} cart={cart} />
+          ))
+        }
         <button className='cart-left-btn'>Continue shopping</button>
       </div>
       <div className="cart-right">
