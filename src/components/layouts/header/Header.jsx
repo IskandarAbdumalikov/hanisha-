@@ -11,6 +11,7 @@ import facebook from "../../../assets/images/facebookIskandar.svg";
 import { CiSearch } from "react-icons/ci";
 import { useGetAllProductsQuery } from "../../../context/productsSlice";
 import SearchModule from "./searchModule/SearchModule";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -18,6 +19,8 @@ const Header = () => {
   const [showList, setShowList] = useState(false);
   const { data } = useGetAllProductsQuery({ search: searchValue });
   const isLogin = localStorage.getItem("x-auth-token");
+  const wishlistData = useSelector((state) => state.wishlist.value);
+
 
   let handleCloser = () => {
     setSearchValue("");
@@ -72,8 +75,13 @@ const Header = () => {
           </div> */}
         </div>
         <div className="header__nav__btns">
-          <NavLink to={'/wishlist'}>
+          <NavLink className={'wishlist'} to={"/wishlist"}>
             <img src={like} alt="" />
+            {wishlistData?.length ? (
+              <sup>{wishlistData?.length}</sup>
+            ) : (
+              <sup>0</sup>
+            )}
           </NavLink>
           <NavLink to={"/cart"}>
             <img src={cart} alt="" />

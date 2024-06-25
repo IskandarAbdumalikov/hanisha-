@@ -2,7 +2,7 @@ import React, { memo, useState } from "react";
 import "./wishlist.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Empty from "../../components/empty/Empty";
-import { FaStar } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { like } from "../../context/wishlistSlice/wishlistSlice";
 import { CiHeart } from "react-icons/ci";
@@ -15,7 +15,7 @@ const Wishlist = () => {
   return (
     <div className="container">
       {wishlistData?.length > 0 ? (
-        <div className="wishlist__products">
+        <div className="products__cards">
           {wishlistData?.map((product) => (
             <div key={product.id} className="products__cards__card">
               <Link to={`/products/${product.id}`}>
@@ -42,7 +42,11 @@ const Wishlist = () => {
                   onClick={() => dispatch(like(product))}
                   className="heart"
                 >
-                  <CiHeart />
+                  {wishlistData.some((el) => el.id === product.id) ? (
+                    <FaHeart color="crimson" />
+                  ) : (
+                    <FaRegHeart />
+                  )}
                 </button>
               </div>
             </div>

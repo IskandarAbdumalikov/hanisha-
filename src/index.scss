@@ -23,3 +23,27 @@ button {
 body {
   background: #fcfcfc;
 }
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  img {
+    width: 100%;
+    object-fit: contain;
+    max-height: 600px;
+    border-radius: 20px !important;
+  }
+  button {
+    padding: 10px 20px;
+    border: 1px solid green;
+    color: white;
+    background: green;
+    font-size: 18px;
+
+    border-radius: 10px;
+  }
+}

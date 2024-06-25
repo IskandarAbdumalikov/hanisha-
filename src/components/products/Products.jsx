@@ -14,6 +14,7 @@ const Products = ({
   perPageCount,
   setPerPageCount,
 }) => {
+  
   const { data: categoriesData } = useGetCategoriesQuery();
 
   const [showModule, setShowModule] = useState(false);
