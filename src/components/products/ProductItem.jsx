@@ -1,12 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { CiHeart } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import { LuShoppingCart } from "react-icons/lu";
-import { Link } from "react-router-dom";
+import { addToCart } from "../../context/cartSlice";
 
 import "./products.scss";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../context/cartSlice";
 
 export const ProductItem = ({ id, urls, title, price, setShowModule, handleViewMore, data }) => {
   const dispatch = useDispatch()

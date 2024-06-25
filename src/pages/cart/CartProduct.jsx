@@ -1,9 +1,9 @@
-import React, { memo, useState } from 'react'
+import React, { memo } from 'react'
+import { useDispatch } from 'react-redux';
 import { TiDelete } from "react-icons/ti";
 import cartImage from '../../assets/images/cart-imagee.svg'
-import './cart-product.scss'
-import { useDispatch } from 'react-redux';
 import { addToShopCount, removeToShopCount } from '../../context/cartSlice';
+import './cart-product.scss'
 
 
 const CartProduct = ({ cart }) => {
