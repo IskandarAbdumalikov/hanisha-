@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useGetAllProductsQuery,
   useGetSingleProductQuery,
@@ -31,6 +31,10 @@ const SinglePage = () => {
     limit: perPageCount,
     page,
   });
+
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [productId]);
 
   // console.log(pack);
 
