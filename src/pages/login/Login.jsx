@@ -3,6 +3,8 @@ import bgImg from "../../assets/images/login-bg.png";
 import { useSignInMutation } from "../../context/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./login.scss";
+import { useDispatch } from "react-redux";
+import { setToken, setUser } from "../../context/authSlice/authSlice";
 
 const initialState = {
   UserName: "john32",
@@ -14,6 +16,7 @@ const Login = () => {
   const [signIn, { data, isError, isLoading, isSuccess, error }] =
     useSignInMutation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,8 +25,9 @@ const Login = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      localStorage.setItem("x-auth-token", data.data.token);
-      navigate("/admin/create-product");
+      dispatch(setToken(data?.data?.token));
+      dispatch(setUser(data?.data?.user));
+      navigate("/admin/manage-product");
     }
     if (isError) {
       alert(error.data.message);

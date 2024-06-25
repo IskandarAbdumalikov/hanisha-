@@ -1,19 +1,5 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-export const productsApi = createApi({
-  reducerPath: "productsApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://bazar.ilyosbekdev.uz/",
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem("x-auth-token");
-      if (token) {
-        // Har so'rovda mana shu token headersda qo'shib jo'natiladi
-        headers.set("Authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-  tagTypes: ["Product"],
+import { api } from "../api";
+export const productsApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query({
       query: (params) => ({

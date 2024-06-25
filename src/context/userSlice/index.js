@@ -1,15 +1,25 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { api } from "../api";
 
-export const userApi = createApi({
-  reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://bazar.ilyosbekdev.uz/",
-  }),
-  tagTypes: ["User"],
-  endpoints: (builder) => ({
-    signIn: builder.mutation({
+export const userApi = api.injectEndpoints({
+  endpoints: (build) => ({
+    getUsers: build.query({
+      query: (params) => ({
+        url: "/users/search",
+        params,
+      }),
+      providesTags: ["User"],
+    }),
+    signIn: build.mutation({
       query: (body) => ({
         url: "/auth/sign-in",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    registerUser: build.mutation({
+      query: (body) => ({
+        url: "/auth/sign-up",
         method: "POST",
         body,
       }),
@@ -18,4 +28,4 @@ export const userApi = createApi({
   }),
 });
 
-export const { useSignInMutation } = userApi;
+export const { useRegisterUserMutation, useSignInMutation,useGetUsersQuery } = userApi;
