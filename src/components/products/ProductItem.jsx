@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { LuShoppingCart } from "react-icons/lu";
-import wishlistSlice from "../../context/wishlistSlice/wishlistSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { like } from "../../context/wishlistSlice/wishlistSlice.js";
 import { addToCart } from "../../context/cartSlice/index.js";
@@ -26,7 +25,7 @@ export const ProductItem = ({
   };
   return (
     <div key={id} className="products__cards__card">
-      <Link to={`/products/${id}`}>
+      <Link onClick={() => handleViewMore(data)}>
         <div className="products__cards__card-img">
           <img src={urls} alt="images" />
         </div>
@@ -39,12 +38,9 @@ export const ProductItem = ({
         <FaStar className="stars" />
       </div>
       <div className="products__cards__card-title">
-        <span
-          style={{ cursor: "pointer" }}
-          onClick={() => handleViewMore(data)}
-        >
+        <Link style={{ cursor: "pointer" }} to={`/products/${id}`}>
           {title}
-        </span>
+        </Link>
       </div>
       <div className="products__cards__card-shop">
         <p>${price}</p>
