@@ -1,9 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getStorage, setStorage } from "../../lib";
 
 const initialState = {
-  value: JSON.parse(localStorage.getItem("cart-shop")) || [],
-  totalCount: 0,
-  totalPrice: 0,
+  value: getStorage("cart-shop")?.value || [],
+  totalCount: getStorage("cart-shop")?.totalCount || 0,
+  totalPrice: getStorage("cart-shop")?.totalPrice || 0,
+  totalAmount: getStorage("cart-shop")?.totalAmount || "seedra",
+};
+
+const calculateTotals = (value) => {
+  const totalCount = value.reduce((acc, item) => acc + item.shopCount, 0);
+  const totalPrice = value.reduce(
+    (acc, item) => acc + item.shopCount * item.price,
+    0
+  );
+  return { totalCount, totalPrice };
 };
 
 export const cartsSlice = createSlice({
@@ -14,16 +25,21 @@ export const cartsSlice = createSlice({
       const index = state.value.findIndex((el) => el.id === payload.id);
       if (index === -1) {
         state.value = [...state.value, { ...payload, shopCount: 1 }];
-        state.totalCount + 1;
       } else {
         state.value = state.value.map((cart) =>
           cart.id === payload.id
-            ? ({ ...cart, shopCount: cart.shopCount + 1 }, state.totalCount + 1)
+            ? { ...cart, shopCount: cart.shopCount + 1 }
             : cart
         );
       }
-      localStorage.setItem("cart-shop", JSON.stringify(state.value));
-      return state;
+      const totals = calculateTotals(state.value);
+      state.totalCount = totals.totalCount;
+      state.totalPrice = totals.totalPrice;
+      setStorage("cart-shop", {
+        ...state,
+        totalCount: state.totalCount,
+        totalPrice: state.totalPrice,
+      });
     },
     addToShopCount: (state, { payload }) => {
       const index = state.value.findIndex((el) => el.id === payload);
@@ -33,7 +49,14 @@ export const cartsSlice = createSlice({
             ? { ...cart, shopCount: cart.shopCount + 1 }
             : cart
         );
-        localStorage.setItem("cart-shop", JSON.stringify(state.value));
+        const totals = calculateTotals(state.value);
+        state.totalCount = totals.totalCount;
+        state.totalPrice = totals.totalPrice;
+        setStorage("cart-shop", {
+          ...state,
+          totalCount: state.totalCount,
+          totalPrice: state.totalPrice,
+        });
       }
     },
     removeToShopCount: (state, { payload }) => {
@@ -43,21 +66,30 @@ export const cartsSlice = createSlice({
           idx === index ? { ...el, shopCount: el.shopCount - 1 } : el
         );
         state.value = updatedCart.filter((cart) => cart.shopCount > 0);
-        localStorage.setItem("cart-shop", JSON.stringify(state.value));
+        const totals = calculateTotals(state.value);
+        state.totalCount = totals.totalCount;
+        state.totalPrice = totals.totalPrice;
+        setStorage("cart-shop", {
+          ...state,
+          totalCount: state.totalCount,
+          totalPrice: state.totalPrice,
+        });
       }
-      return state;
     },
     deleteToCart: (state, { payload }) => {
-      localStorage.setItem(
-        "cart-shop",
-        JSON.stringify(state?.value?.filter((cart) => cart.id !== payload))
-      );
-      return state;
+      state.value = state.value.filter((cart) => cart.id !== payload);
+      const totals = calculateTotals(state.value);
+      state.totalCount = totals.totalCount;
+      state.totalPrice = totals.totalPrice;
+      setStorage("cart-shop", {
+        ...state,
+        totalCount: state.totalCount,
+        totalPrice: state.totalPrice,
+      });
     },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { addToCart, addToShopCount, removeToShopCount, deleteToCart } =
   cartsSlice.actions;
 
