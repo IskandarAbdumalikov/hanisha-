@@ -1,40 +1,44 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { BiArrowBack } from "react-icons/bi";
 import TotalAmount from '../../../components/total-amount';
 import './checkout.scss'
 
-const Checkout = () => {
+const Checkout = ({ close }) => {
     const [show, setShow] = useState(false)
 
-    console.log(show);
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     return (
         <div className='checkout-container'>
             <div className="checkout-container-left">
                 <div className="flex">
                     <div className='checkout-container-left-div'>
                         <p className='checkout-container-left-div-title'>
-                            <BiArrowBack color='gray' fontSize={25} />
+                            <BiArrowBack onClick={() => close(p => !p)} color='gray' fontSize={25} />
                             <span>Checkout</span>
                         </p>
-                        <button className='left-div-btns'>
-                            <p className={`bg-btns ${!show ? 'bg-btnsbtnAtice' : ''}`} onClick={() => setShow(p => !p)} ></p>
-                            <p className='bg-btns'></p>
-                        </button>
+                        {
+                            show ? (<></>) : (
+                                <button className='left-div-btns'>
+                                    <p className='bg-lime' ></p> <p className='bg-gray' ></p>
+                                </button>
+                            )}
                     </div>
                 </div>
 
                 <h2 className='checkout-container-left-h2'>Personal info</h2>
-                <form className="checkout-container-left-form-1">
+                <div className="checkout-container-left-form-1">
                     <label htmlFor=""> Name
                         <input type="text" name="" placeholder="Your name" />
                     </label>
                     <label htmlFor=""> Phone Number
                         <input type="text" name="" placeholder="Your number" />
                     </label>
-                </form>
+                </div>
 
                 <h2 className='checkout-container-left-h2'>Adress</h2>
-                <form action="checkout-container-left-form-2">
+                <div className="checkout-container-left-form-2">
                     <label className='label' htmlFor=""> <span>State</span>
                         <input type="text" name="" placeholder="Name of state" />
                     </label>
@@ -47,9 +51,9 @@ const Checkout = () => {
                     <label className='label' htmlFor=""> <span>ZIP code</span>
                         <input type="text" name="" placeholder="ZIP code" />
                     </label>
-                </form>
+                </div>
 
-                <button className='checkout-container-left-btn'>Continue</button>
+                <button onClick={() => setShow(p => !p)} className='checkout-container-left-btn'>Continue</button>
             </div>
             <div className="checkout-container-right">
                 <h4 className='checkout-container-right-h4'>Your cart</h4>

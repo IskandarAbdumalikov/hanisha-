@@ -1,20 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import CartProduct from './CartProduct'
 import TotalAmount from '../../components/total-amount'
 import Checkout from './checkout/Checkout'
+import cartEmpty from '../../assets/images/cart-empty.jpg'
+import { useNavigate } from 'react-router-dom/dist'
 import './cart.scss'
 
 const Cart = () => {
   const [open, setOpen] = useState(false)
-  const carts = useSelector(state => state.cartData.value)
+  const { totalCount, value: carts, totalPrice } = useSelector(state => state?.cartData)
+  const navigate = useNavigate()
 
-  return open ? <Checkout /> : (
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
+
+  return open ? <Checkout close={setOpen} /> : (!carts.length ? (
+    <div key={'cart-emptys-img'} className='cart-emptys-div'>
+      <figure className='cart-emptys-figure'>
+        <img src={cartEmpty} className='cart-emptys-img' alt="" />
+      </figure>
+      <button onClick={() => navigate('/all-products')} className='cart-emptys-btn'>Go Shop</button>
+    </div>
+  ) : ((
     <div className='cart-container'>
       <div className="cart-left">
         <div className='cart-title'>
           <h3 className='cart-title-h4'>Your cart.</h3>
-          <p className='cart-title-p'>3 items</p>
+          <p className='cart-title-p'>{totalCount.brm()} items</p>
         </div>
         <hr />
         <div className='cart-name'>
@@ -25,33 +39,37 @@ const Cart = () => {
             <p className='cart-title-p'>TOTAL</p>
           </div>
         </div>
-        {
-          carts?.map(cart => (
-            <CartProduct key={cart?.id} cart={cart} />
-          ))
-        }
-        <button className='cart-left-btn'>Continue shopping</button>
-      </div>
-      <div className="cart-right">
-        <h4 className='cart-right-h4'>Order summary</h4>
-        <div className='cart-right-items'>
-          <p className='cart-right-items-p'>3 ITEMS</p>
-          <h5 className='cart-right-items-h5'>$37.68</h5>
+        <div className="cart-products-container">
+          {
+            carts?.map(cart => (
+              <CartProduct key={cart?.id} cart={cart} />
+            ))
+          }
         </div>
-        <select className='cart-right-select' name="" id="">
-          <option value="shopping"> Type of delievery Shipping</option>
-          <option value="shopping">shopping</option>
-          <option value="shopping">shopping</option>
-        </select>
-        <label htmlFor="promocode" className='cart-product-right-label'>
-          Promocode <input type="text" name="" id="promocode" placeholder='Promocode' />
-        </label>
-        <hr />
-        <TotalAmount key={'3'} name={'Total amount'} price={'$12.56'} />
-        <button onClick={() => setOpen(p => !p)} className='cart-right-btn' type='button'>Checkout</button>
+        <button onClick={() => setOpen(p => !p)} className='cart-left-btn'>Continue shopping</button>
+      </div>
+      <div className="cart-rigth-div">
+        <div className="cart-right">
+          <h4 className='cart-right-h4'>Order summary</h4>
+          <div className='cart-right-items'>
+            <p className='cart-right-items-p'>{totalCount.brm()} ITEMS</p>
+            <h5 className='cart-right-items-h5'>${totalPrice.brm()}</h5>
+          </div>
+          <select className='cart-right-select' name="" id="">
+            <option value="shopping"> Type of delievery Shipping</option>
+            <option value="shopping">shopping</option>
+            <option value="shopping">shopping</option>
+          </select>
+          <label htmlFor="promocode" className='cart-product-right-label'>
+            Promocode <input type="text" name="" id="promocode" placeholder='Promocode' />
+          </label>
+          <hr />
+          <TotalAmount key={'3'} name={'Total amount'} price={`$${totalPrice.brm()}`} />
+          <button onClick={() => setOpen(p => !p)} className='cart-right-btn' type='button'>Checkout</button>
+        </div>
       </div>
     </div>
-  )
+  )))
 }
 
 export default Cart
