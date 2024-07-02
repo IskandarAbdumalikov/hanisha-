@@ -9,7 +9,6 @@ import AllProducts from "./pages/allProducts/AllProducts";
 import Blog from "./pages/blog/Blog";
 import Cart from "./pages/cart/Cart";
 import Contact from "./pages/contact/Contact";
-import Checkout from "./pages/checkout/Checkout";
 import Payment from "./pages/payment/Payment";
 import Auth from "./pages/auth/Auth";
 import NotFound from "./pages/notFound/NotFound";
@@ -34,7 +33,6 @@ const App = () => {
           <Route path="blog" element={<Blog />} />
           <Route path="cart" element={<Cart />} />
           <Route path="wishlist" element={<Wishlist />} />
-          <Route path="checkout" element={<Checkout />} />
           <Route path="contact" element={<Contact />} />
           <Route path="payment" element={<Payment />} />
           <Route path="products/:productId" element={<SinglePage />} />
